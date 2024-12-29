@@ -3,6 +3,8 @@ import React from "react";
 import Hero from "@/components/shared/Hero";
 import TechCard from "@/components/shared/TechCard";
 import { Compare } from "@/components/ui/compare";
+import { LinkPreview } from "@/components/ui/link-preview";
+import { motion } from "framer-motion";
 
 export default function Page() {
    return (
@@ -53,6 +55,30 @@ export default function Page() {
                />
             </div>
          </div>
+
+         {/* main links */}
+         <div className="w-full bg-[#F9FAFB] py-20 lg:py-40">
+            <div className="container mx-auto px-4 lg:px-16 flex justify-between items-center flex-wrap">
+               <div className="lg:w-1/2 w-full flex flex-col items-start justify-center gap-5">
+                  <p className="text-xl md:text-3xl">
+                     Ready to{" "}
+                     <LinkPreview url="https://buddhadebkoner.rajislab.com" className="font-bold">
+                        launch
+                     </LinkPreview>{" "} your Website?
+                  </p>
+                  <p
+                     className="text-[#6A7282] text-base md:text-xl"
+                  >Our template provides everything you need to get your SaaS up and  running quickly. Don't waste time on boilerplate - focus on what makes  your product unique.</p>
+               </div>
+               <div className="lg:w-1/2 w-full lg:h-full h-36 flex items-center lg:justify-center justify-start">
+                  <button className="bg-black text-white rounded-full py-2 px-6 text-sm font-semibold hover:bg-gray-800 transition-colors">
+                     Contact Us
+                  </button>
+               </div>
+            </div>
+         </div>
+
+         {/* team details */}
       </div>
    );
 }

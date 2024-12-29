@@ -1,4 +1,5 @@
 import { PinContainer } from "../ui/3d-pin";
+import Image from "next/image";
 
 export default function TechCard({
    tech,
@@ -15,10 +16,11 @@ export default function TechCard({
          <div className="flex flex-col items-center justify-center rounded-xl p-6 w-[18rem] h-[18rem] shadow-lg transition-transform hover:scale-105">
             {/* Icon */}
             <div className="flex items-center justify-center w-16 h-16 bg-[#FF6900] rounded-full shadow-md">
-               <img
-                  className="w-10 h-10"
+               <Image
                   src={tech.icon}
                   alt={tech.iconAult}
+                  width={40}  
+                  height={40} 
                />
             </div>
             {/* Title */}

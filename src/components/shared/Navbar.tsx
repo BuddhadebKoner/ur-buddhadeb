@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
    return (
@@ -6,7 +7,7 @@ export default function Navbar() {
          <div className="container mx-auto flex items-center justify-between px-4 lg:px-16">
             {/* Logo Section */}
             <Link href="/" className="flex items-center space-x-3">
-               <img
+               <Image
                   width={40}
                   height={40}
                   className="rounded-full"
