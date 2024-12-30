@@ -6,7 +6,7 @@ export default function TechCard({
 }: {
    tech: {
       icon: string;
-      iconAult: string;
+      iconAlt: string;
       title: string;
       subTitle: string;
    };
@@ -18,7 +18,7 @@ export default function TechCard({
             <div className="flex items-center justify-center w-16 h-16 bg-[#FF6900] rounded-full shadow-md">
                <Image
                   src={tech.icon}
-                  alt={tech.iconAult}
+                  alt={tech.iconAlt}
                   width={40}  
                   height={40} 
                />

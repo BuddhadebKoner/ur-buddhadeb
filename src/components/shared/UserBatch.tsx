@@ -11,7 +11,7 @@ export default function UserBatch({
    };
 }) {
    return (
-      <div className="w-fit h-fit flex flex-col justify-center items-start gap-4 p-4 rounded-lg shadow-md">
+      <div className="w-fit h-fit flex flex-col justify-center items-start gap-4 p-4 rounded-lg shadow-md cursor-pointer">
          {/* User Info Section */}
          <div className="flex justify-start items-center gap-4">
             <Image

@@ -1,13 +1,14 @@
 import Image from "next/image";
 
 export default function PriceingCard({
-   plan
+   plan,
 }: {
    plan: {
       title: string;
       description: string;
-      price: string;
-      condition: string;
+      discountedPrice: number;
+      originalPrice: number;
+      discount: number;
       features: { text: string; icon: string }[];
    };
 }) {
@@ -16,12 +17,14 @@ export default function PriceingCard({
          <h2 className="text-2xl font-semibold text-start text-gray-800">{plan.title}</h2>
          <p className="text-start text-gray-600 mb-4">{plan.description}</p>
          <h3 className="text-xl font-bold text-start text-gray-800 mb-6">
-            {plan.price} <span className="text-sm text-gray-500">{plan.condition}</span>
+            <span className="line-through text-red-400 mr-2">₹{plan.originalPrice}</span>
+            ₹{plan.discountedPrice}
+            <span className="text-sm text-green-600 ml-2">({plan.discount}% OFF)</span>
          </h3>
          <div className="space-y-4">
             {plan.features.map((feature, index) => (
                <div key={index} className="flex items-center space-x-2">
-                  <Image src={feature.icon} alt="icon" className="w-4 h-4" />
+                  <Image width={20} height={20} src={feature.icon} alt="icon" className="w-4 h-4" />
                   <p className="text-gray-600">{feature.text}</p>
                </div>
             ))}
