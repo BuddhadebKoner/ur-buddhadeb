@@ -4,7 +4,12 @@ import Hero from "@/components/shared/Hero";
 import TechCard from "@/components/shared/TechCard";
 import { Compare } from "@/components/ui/compare";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { motion } from "framer-motion";
+import { FlipWords } from "@/components/ui/flip-words";
+import Image from "next/image";
+import UserBatch from "@/components/shared/UserBatch";
+import { ThreeDCard } from "@/components/shared/Card";
+
+const words = ["Family", "Team"];
 
 export default function Page() {
    return (
@@ -60,12 +65,12 @@ export default function Page() {
          <div className="w-full bg-[#F9FAFB] py-20 lg:py-40">
             <div className="container mx-auto px-4 lg:px-16 flex justify-between items-center flex-wrap">
                <div className="lg:w-1/2 w-full flex flex-col items-start justify-center gap-5">
-                  <p className="text-xl md:text-3xl">
+                  <div className="text-xl md:text-3xl">
                      Ready to{" "}
                      <LinkPreview url="https://buddhadebkoner.rajislab.com" className="font-bold">
                         launch
                      </LinkPreview>{" "} your Website?
-                  </p>
+                  </div>
                   <p
                      className="text-[#6A7282] text-base md:text-xl"
                   >Our template provides everything you need to get your SaaS up and  running quickly. Don't waste time on boilerplate - focus on what makes  your product unique.</p>
@@ -79,6 +84,55 @@ export default function Page() {
          </div>
 
          {/* team details */}
+         <div className="w-full bg-white py-10 lg:py-20">
+            <div className="container mx-auto px-4 lg:px-16">
+               {/* Heading Section */}
+               <div className="w-full text-center mb-10">
+                  <h2 className="text-2xl lg:text-4xl font-semibold text-neutral-800">
+                     We Are
+                     <span className="ml-2 text-blue-600">
+                        <FlipWords words={words} />
+                     </span>
+                  </h2>
+               </div>
+
+               {/* Team Members Section */}
+               <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+                  <UserBatch
+                     user={{
+                        image: "/buddhadeb.png",
+                        name: "Buddhadeb Koner",
+                        role: "Web Developer",
+                        note: "I make products with Love ❤️",
+                     }}
+                  />
+                  <UserBatch
+                     user={{
+                        image: "/gourab.jpg",
+                        name: "Gourab Ganguly",
+                        role: "AI Analyst",
+                        note: "I make products with Love ❤️",
+                     }}
+                  />
+                  <UserBatch
+                     user={{
+                        image: "/rahul.jpg",
+                        name: "Rahul Tantubay",
+                        role: "Product Manager",
+                        note: "I make products with Love ❤️",
+                     }}
+                  />
+               </div>
+            </div>
+         </div>
+
+         {/* feedback section */}
+         <div className="w-full bg-[#F9FAFB] py-20 lg:py-40">
+            <div className="container mx-auto px-4 lg:px-16 flex justify-between items-center flex-wrap">
+               <ThreeDCard />
+            </div>
+         </div>
       </div>
    );
 }
+
