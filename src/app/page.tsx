@@ -5,7 +5,6 @@ import TechCard from "@/components/shared/TechCard";
 import { Compare } from "@/components/ui/compare";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { FlipWords } from "@/components/ui/flip-words";
-import Image from "next/image";
 import UserBatch from "@/components/shared/UserBatch";
 import { ThreeDCard } from "@/components/shared/Card";
 
@@ -20,8 +19,8 @@ export default function Page() {
                <Hero />
                <div className="p-4 border rounded-3xl hidden lg:block">
                   <Compare
-                     firstImage="https://assets.aceternity.com/code-problem.png"
-                     secondImage="https://assets.aceternity.com/code-solution.png"
+                     firstImage="/buddhadeb.png"
+                     secondImage="/gourab.jpg"
                      firstImageClassName="object-cover object-left-top"
                      secondImageClassname="object-cover object-left-top"
                      className="h-[250px] w-[200px] md:h-[500px] md:w-[500px]"
@@ -67,13 +66,15 @@ export default function Page() {
                <div className="lg:w-1/2 w-full flex flex-col items-start justify-center gap-5">
                   <div className="text-xl md:text-3xl">
                      Ready to{" "}
-                     <LinkPreview url="https://buddhadebkoner.rajislab.com" className="font-bold">
+                     <LinkPreview url="https://buddhadebkoner.rajislab.com" className="font-bold text-[#FF6900]">
                         launch
                      </LinkPreview>{" "} your Website?
                   </div>
                   <p
                      className="text-[#6A7282] text-base md:text-xl"
-                  >Our template provides everything you need to get your SaaS up and  running quickly. Don't waste time on boilerplate - focus on what makes  your product unique.</p>
+                  >
+                     Our template provides everything you need to get your SaaS up and running quickly. Don&apos;t waste time on boilerplate - focus on what makes your product unique.
+                  </p>
                </div>
                <div className="lg:w-1/2 w-full lg:h-full h-36 flex items-center lg:justify-center justify-start">
                   <button className="bg-black text-white rounded-full py-2 px-6 text-sm font-semibold hover:bg-gray-800 transition-colors">
@@ -126,10 +127,51 @@ export default function Page() {
             </div>
          </div>
 
-         {/* feedback section */}
-         <div className="w-full bg-[#F9FAFB] py-20 lg:py-40">
-            <div className="container mx-auto px-4 lg:px-16 flex justify-between items-center flex-wrap">
-               <ThreeDCard />
+         {/* projects section */}
+         <div className="w-full bg-[#F9FAFB] py-10 lg:py-20">
+            <div className="container mx-auto px-4  flex justify-evenly items-center flex-wrap">
+               <div className="w-full text-center mb-10">
+                  <h2 className="text-2xl lg:text-4xl font-semibold text-neutral-800">
+                     I already delivered some cool Websites
+                  </h2>
+               </div>
+               <div className="w-full flex justify-evenly items-center flex-wrap">
+                  <ThreeDCard
+                     cardData={{
+                        title: "Qr Attender",
+                        description: "We made this app with some cool features that you will love.",
+                        imageSrc: "/website1.webp",
+                        imageAlt: "thumbnail",
+                        tryNowLink: "https://qrattender.rajislab.com",
+                        tryNowText: "Try now →",
+                        orderNowText: "Order Now",
+                     }}
+                  />
+
+                  <ThreeDCard
+                     cardData={{
+                        title: "Social Media App",
+                        description: "We made this app with some cool features that you will love.",
+                        imageSrc: "/website2.webp",
+                        imageAlt: "thumbnail",
+                        tryNowLink: "https://kochugram.rajislab.com",
+                        tryNowText: "Try now →",
+                        orderNowText: "Order Now",
+                     }}
+                  />
+
+                  <ThreeDCard
+                     cardData={{
+                        title: "Made portfolio Like this",
+                        description: "We made this app with some cool features that you will love.",
+                        imageSrc: "/website3.webp",
+                        imageAlt: "thumbnail",
+                        tryNowLink: "https://buddhadebkoner.rajislab.com/",
+                        tryNowText: "Try now →",
+                        orderNowText: "Order Now",
+                     }}
+                  />
+               </div>
             </div>
          </div>
       </div>

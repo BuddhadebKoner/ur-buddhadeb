@@ -16,7 +16,7 @@ export const TextRevealCard = ({
   className?: string;
 }) => {
   const [widthPercentage, setWidthPercentage] = useState(0);
-  const cardRef = useRef<HTMLDivElement | any>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null); // Fixed the type to HTMLDivElement | null
   const [left, setLeft] = useState(0);
   const [localWidth, setLocalWidth] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -30,7 +30,8 @@ export const TextRevealCard = ({
     }
   }, []);
 
-  function mouseMoveHandler(event: any) {
+  // Fixed the event type to MouseEvent
+  function mouseMoveHandler(event: React.MouseEvent<HTMLDivElement>) {
     event.preventDefault();
 
     const { clientX } = event;
@@ -47,6 +48,8 @@ export const TextRevealCard = ({
   function mouseEnterHandler() {
     setIsMouseOver(true);
   }
+
+  // Fixed the event type to TouchEvent
   function touchMoveHandler(event: React.TouchEvent<HTMLDivElement>) {
     event.preventDefault();
     const clientX = event.touches[0]!.clientX;
@@ -81,12 +84,12 @@ export const TextRevealCard = ({
           animate={
             isMouseOver
               ? {
-                  opacity: widthPercentage > 0 ? 1 : 0,
-                  clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
-                }
+                opacity: widthPercentage > 0 ? 1 : 0,
+                clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
+              }
               : {
-                  clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
-                }
+                clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
+              }
           }
           transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
           className="absolute bg-[#1d1c20] z-20  will-change-transform"

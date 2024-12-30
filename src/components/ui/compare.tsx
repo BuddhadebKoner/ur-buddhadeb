@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SparklesCore } from "./sparkles";
 import { IconDotsVertical } from "@tabler/icons-react";
+import Image from "next/image";
 
 interface CompareProps {
   firstImage?: string;
@@ -33,8 +34,6 @@ export const Compare = ({
   const [isDragging, setIsDragging] = useState(false);
 
   const sliderRef = useRef<HTMLDivElement>(null);
-
-  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -68,12 +67,10 @@ export const Compare = ({
   }, [startAutoplay, stopAutoplay]);
 
   function mouseEnterHandler() {
-    setIsMouseOver(true);
     stopAutoplay();
   }
 
   function mouseLeaveHandler() {
-    setIsMouseOver(false);
     if (slideMode === "hover") {
       setSliderXPercent(initialSliderPercentage);
     }
@@ -83,14 +80,11 @@ export const Compare = ({
     startAutoplay();
   }
 
-  const handleStart = useCallback(
-    (clientX: number) => {
-      if (slideMode === "drag") {
-        setIsDragging(true);
-      }
-    },
-    [slideMode]
-  );
+  const handleStart = useCallback(() => {
+    if (slideMode === "drag") {
+      setIsDragging(true);
+    }
+  }, [slideMode]);
 
   const handleEnd = useCallback(() => {
     if (slideMode === "drag") {
@@ -113,39 +107,19 @@ export const Compare = ({
     [slideMode, isDragging]
   );
 
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => handleStart(e.clientX),
-    [handleStart]
-  );
+  const handleMouseDown = useCallback(() => handleStart(), [handleStart]);
   const handleMouseUp = useCallback(() => handleEnd(), [handleEnd]);
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => handleMove(e.clientX),
     [handleMove]
   );
-
-  const handleTouchStart = useCallback(
-    (e: React.TouchEvent) => {
-      if (!autoplay) {
-        handleStart(e.touches[0].clientX);
-      }
-    },
-    [handleStart, autoplay]
-  );
-
-  const handleTouchEnd = useCallback(() => {
-    if (!autoplay) {
-      handleEnd();
-    }
-  }, [handleEnd, autoplay]);
-
+  const handleTouchStart = useCallback(() => handleStart(), [handleStart]);
+  const handleTouchEnd = useCallback(() => handleEnd(), [handleEnd]);
   const handleTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      if (!autoplay) {
-        handleMove(e.touches[0].clientX);
-      }
-    },
-    [handleMove, autoplay]
+    (e: React.TouchEvent) => handleMove(e.touches[0].clientX),
+    [handleMove]
   );
+
 
   return (
     <div
@@ -187,7 +161,7 @@ export const Compare = ({
             />
           </div>
           {showHandlebar && (
-            <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute   flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
+            <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
               <IconDotsVertical className="h-4 w-4 text-black" />
             </div>
           )}
@@ -206,7 +180,9 @@ export const Compare = ({
               }}
               transition={{ duration: 0 }}
             >
-              <img
+              <Image
+                width={400}
+                height={400}
                 alt="first image"
                 src={firstImage}
                 className={cn(
