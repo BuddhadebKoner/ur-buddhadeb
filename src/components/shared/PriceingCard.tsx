@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function PriceingCard({
    plan
 }: {
@@ -19,7 +21,7 @@ export default function PriceingCard({
          <div className="space-y-4">
             {plan.features.map((feature, index) => (
                <div key={index} className="flex items-center space-x-2">
-                  <img src={feature.icon} alt="icon" className="w-4 h-4" />
+                  <Image src={feature.icon} alt="icon" className="w-4 h-4" />
                   <p className="text-gray-600">{feature.text}</p>
                </div>
             ))}
