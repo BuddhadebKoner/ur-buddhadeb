@@ -26,7 +26,7 @@ export default function Navbar() {
                   Pricing
                </Link>
                <Link
-                  href="/api/auth/sign-in"
+                  href="/sign-in"
                   className="text-sm bg-black text-white lg:px-4 px-2 py-1 lg:py-2 rounded-full hover:bg-gray-800 transition duration-200"
                >
                   Sign In
