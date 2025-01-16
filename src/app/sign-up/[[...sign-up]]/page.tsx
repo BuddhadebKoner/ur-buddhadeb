@@ -18,6 +18,7 @@ export default function SignUp() {
    const [pendingVerification, setPendingVerification] = useState(false);
    const [code, setCode] = useState("");
    const [error, setError] = useState("");
+   const [loading, setLoading] = useState(false);
 
    const router = useRouter();
 
@@ -28,12 +29,12 @@ export default function SignUp() {
    // handle submit
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      // console.log("form data is :", emailAddress, username);
 
-      if (!isLoaded) {
+      if (!isLoaded || loading) {
          return;
       }
 
+      setLoading(true);
       try {
          await signUp.create({
             emailAddress,
@@ -49,6 +50,8 @@ export default function SignUp() {
       } catch (error: any) {
          console.error(error);
          setError(error.errors[0]?.message || "An error occurred during sign-up.");
+      } finally {
+         setLoading(false);
       }
    };
 
@@ -56,15 +59,15 @@ export default function SignUp() {
    const handleVerification = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      if (!isLoaded) {
+      if (!isLoaded || loading) {
          return;
       }
 
+      setLoading(true);
       try {
          const completeSignUp = await signUp.attemptEmailAddressVerification({
             code,
          });
-         // console.log("completeSignUp", completeSignUp);
 
          if (completeSignUp.status === "complete") {
             router.push("/");
@@ -74,9 +77,10 @@ export default function SignUp() {
       } catch (error: any) {
          console.error(error);
          setError("Failed to verify. Please try again.");
+      } finally {
+         setLoading(false);
       }
    };
-
 
    return (
       <div className="max-w-md w-full mx-auto p-6 bg-white dark:bg-black rounded-lg lg:shadow-md">
@@ -93,6 +97,7 @@ export default function SignUp() {
                   <button
                      className="w-full h-10 flex items-center justify-center bg-gray-100 dark:bg-zinc-900 text-black dark:text-white rounded-md hover:bg-gray-200 dark:hover:bg-zinc-800 transition"
                      type="button"
+                     disabled={loading}
                   >
                      <IconBrandGithub className="mr-2" />
                      Continue with GitHub
@@ -100,6 +105,7 @@ export default function SignUp() {
                   <button
                      className="w-full h-10 flex items-center justify-center bg-gray-100 dark:bg-zinc-900 text-black dark:text-white rounded-md hover:bg-gray-200 dark:hover:bg-zinc-800 transition"
                      type="button"
+                     disabled={loading}
                   >
                      <IconBrandGoogle className="mr-2" />
                      Continue with Google
@@ -122,6 +128,7 @@ export default function SignUp() {
                      value={username}
                      onChange={(e) => setUsername(e.target.value)}
                      type="text"
+                     disabled={loading}
                   />
                </div>
                <div className="mb-4">
@@ -132,16 +139,19 @@ export default function SignUp() {
                      value={emailAddress}
                      onChange={(e) => setEmailAddress(e.target.value)}
                      type="email"
+                     disabled={loading}
                   />
                </div>
                {/* Add Clerk CAPTCHA */}
-               <div id="clerk-captcha" className="mb-4"></div>
+               <div id="clerk-captcha" className="mb-4 w-full"></div>
                {error && <p className="text-red-500 text-sm">{error}</p>}
                <button
-                  className="w-full h-10 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
+                  className={`w-full h-10 bg-blue-600 text-white rounded-md font-medium ${loading ? "cursor-not-allowed opacity-50" : "hover:bg-blue-700 transition"
+                     }`}
                   type="submit"
+                  disabled={loading}
                >
-                  Sign Up
+                  {loading ? "Processing..." : "Sign Up"}
                </button>
 
                <p className="text-center mt-4 text-sm">
@@ -161,14 +171,17 @@ export default function SignUp() {
                      value={code}
                      onChange={(e) => setCode(e.target.value)}
                      type="text"
+                     disabled={loading}
                   />
                </div>
                {error && <p className="text-red-500 text-sm">{error}</p>}
                <button
-                  className="w-full h-10 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition"
+                  className={`w-full h-10 bg-green-600 text-white rounded-md font-medium ${loading ? "cursor-not-allowed opacity-50" : "hover:bg-green-700 transition"
+                     }`}
                   type="submit"
+                  disabled={loading}
                >
-                  Verify Code
+                  {loading ? "Verifying..." : "Verify Code"}
                </button>
             </form>
          )}
