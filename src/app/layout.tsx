@@ -3,7 +3,7 @@ import { Geist, Manrope } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
-import { ClerkProvider, GoogleOneTap } from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const geistSans = Geist({
    variable: '--font-geist-sans',
@@ -34,7 +34,6 @@ export default function RootLayout({
                className={`${manrope.variable} ${geistSans.variable} antialiased`}
             >
                <Navbar />
-               <GoogleOneTap />
                {children}
                <Footer />
             </body>
