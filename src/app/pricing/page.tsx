@@ -1,5 +1,9 @@
+"use client";
+
+import PopupForm from "@/components/shared/PopupForm";
 import PriceingCard from "@/components/shared/PriceingCard";
 import Head from "next/head";
+import { useState } from "react";
 
 const pricingData = [
    {
@@ -52,8 +56,13 @@ const pricingData = [
    },
 ];
 
-
 export default function Pricing() {
+   const [showForm, setShowForm] = useState(false);
+
+   const handleGetStartedClick = () => {
+      setShowForm(true);
+   };
+
    return (
       <>
          <Head>
@@ -71,11 +80,23 @@ export default function Pricing() {
             <div className="w-full lg:py-10 py-5">
                <div className="container mx-auto flex justify-evenly items-center px-4 lg:px-16 flex-wrap">
                   {pricingData.map((plan, index) => (
-                     <PriceingCard key={index} plan={plan} />
+                     <PriceingCard
+                        key={index}
+                        plan={plan}
+                        onGetStartedClick={handleGetStartedClick}
+                     />
                   ))}
                </div>
             </div>
          </div>
+
+         {/* Popup form */}
+         {showForm && (
+            <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+               <PopupForm 
+               onClose={() => setShowForm(false)} />
+            </div>
+         )}
       </>
    );
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 
 export default function PriceingCard({
    plan,
+   onGetStartedClick,
 }: {
    plan: {
       title: string;
@@ -11,6 +12,7 @@ export default function PriceingCard({
       discount: number;
       features: { text: string; icon: string }[];
    };
+   onGetStartedClick: () => void;
 }) {
    return (
       <div className="bg-white shadow-lg rounded-lg p-6 max-w-xs w-full mt-5">
@@ -29,7 +31,10 @@ export default function PriceingCard({
                </div>
             ))}
          </div>
-         <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+         <button
+            onClick={onGetStartedClick}
+            className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+         >
             Get Started
          </button>
       </div>

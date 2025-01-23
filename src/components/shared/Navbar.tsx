@@ -1,7 +1,12 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
 
 export default function Navbar() {
+   const { user, isLoaded } = useUser();
+
    return (
       <div className="w-full py-3 flex items-center justify-between border-b border-gray-300 bg-[#F9FAFB]">
          <div className="container mx-auto flex items-center justify-between px-4 lg:px-16">
@@ -25,12 +30,29 @@ export default function Navbar() {
                >
                   Pricing
                </Link>
-               <Link
-                  href="/sign-in"
-                  className="text-sm bg-black text-white lg:px-4 px-2 py-1 lg:py-2 rounded-full hover:bg-gray-800 transition duration-200"
-               >
-                  Sign In
-               </Link>
+               {isLoaded ? (
+                  user ? (
+                     <div className="flex items-center space-x-3">
+                        <span className="lg:text-lg text-sm font-light text-gray-700">
+                           {user.firstName || "User"}
+                        </span>
+                     </div>
+                  ) : (
+                     <Link
+                        href="/sign-in"
+                        className="text-sm bg-black text-white lg:px-4 px-2 py-1 lg:py-2 rounded-full hover:bg-gray-800 transition duration-200"
+                     >
+                        Sign In
+                     </Link>
+                  )
+               ) : (
+                  <button
+                     disabled
+                     className="text-sm bg-gray-400 text-white lg:px-4 px-2 py-1 lg:py-2 rounded-full cursor-not-allowed"
+                  >
+                     Loading...
+                  </button>
+               )}
             </div>
          </div>
       </div>

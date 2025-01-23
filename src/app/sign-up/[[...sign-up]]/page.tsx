@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+// import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 
 export default function SignUp() {
    const { isLoaded, signUp } = useSignUp();
@@ -47,29 +47,29 @@ export default function SignUp() {
       }
    };
 
-   const handleOAuthSignUp = async (strategy: "oauth_google" | "oauth_github") => {
-      if (!isLoaded || isSubmitting) return;
+   // const handleOAuthSignUp = async (strategy: "oauth_google" | "oauth_github") => {
+   //    if (!isLoaded || isSubmitting) return;
 
-      setIsSubmitting(true);
-      try {
-         await signUp.authenticateWithRedirect({
-            strategy,
-            redirectUrl: "/sso-callback",
-            redirectUrlComplete: "/",
-         });
-      } catch (err: unknown) {
-         if (err instanceof Error && "errors" in err) {
-            const customError = err as { errors: { message: string }[] };
-            setError(customError.errors[0]?.message || "OAuth sign-up failed. Please try again.");
-         } else if (err instanceof Error) {
-            setError(err.message || "OAuth sign-up failed. Please try again.");
-         } else {
-            setError("An unexpected error occurred. Please try again.");
-         }
-      } finally {
-         setIsSubmitting(false);
-      }
-   };
+   //    setIsSubmitting(true);
+   //    try {
+   //       await signUp.authenticateWithRedirect({
+   //          strategy,
+   //          redirectUrl: "/sso-callback",
+   //          redirectUrlComplete: "/",
+   //       });
+   //    } catch (err: unknown) {
+   //       if (err instanceof Error && "errors" in err) {
+   //          const customError = err as { errors: { message: string }[] };
+   //          setError(customError.errors[0]?.message || "OAuth sign-up failed. Please try again.");
+   //       } else if (err instanceof Error) {
+   //          setError(err.message || "OAuth sign-up failed. Please try again.");
+   //       } else {
+   //          setError("An unexpected error occurred. Please try again.");
+   //       }
+   //    } finally {
+   //       setIsSubmitting(false);
+   //    }
+   // };
 
    const handleCodeChange = (value: string, index: number) => {
       const newCode = [...code];
@@ -93,6 +93,7 @@ export default function SignUp() {
             <form className="mt-6 space-y-4" onSubmit={handleSignUpWithEmail}>
                {!pendingVerification ? (
                   <>
+                     {/* 
                      <div className="space-y-4">
                         <button
                            className="w-full h-10 flex items-center justify-center bg-gray-100 dark:bg-zinc-900 text-black dark:text-white rounded-md hover:bg-gray-200 dark:hover:bg-zinc-800 transition"
@@ -112,12 +113,13 @@ export default function SignUp() {
                            <IconBrandGoogle className="mr-2" />
                            {isSubmitting ? "Processing..." : "Continue with Google"}
                         </button>
-                     </div>
+                     </div> 
                      <div className="flex items-center my-6">
                         <div className="flex-grow h-px bg-neutral-300 dark:bg-neutral-700"></div>
                         <span className="mx-4 text-neutral-600 dark:text-neutral-400 text-sm">OR</span>
                         <div className="flex-grow h-px bg-neutral-300 dark:bg-neutral-700"></div>
                      </div>
+                     */}
                      <div className="mb-4">
                         <Label htmlFor="username">Username</Label>
                         <Input

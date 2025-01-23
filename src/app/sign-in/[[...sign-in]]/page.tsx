@@ -14,14 +14,14 @@ export default function SignIn() {
    const [pendingVerification, setPendingVerification] = useState(false);
    const [code, setCode] = useState(["", "", "", "", "", ""]);
    const [error, setError] = useState("");
-   const [loading, setLoading] = useState(false); // Loading state
+   const [loading, setLoading] = useState(false); 
    const router = useRouter();
 
    const handleEmailSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (!isLoaded) return;
 
-      setLoading(true); // Start loading
+      setLoading(true);
       try {
          if (pendingVerification) {
             const verificationCode = code.join("");
