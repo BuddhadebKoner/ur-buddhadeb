@@ -109,7 +109,7 @@ const projects = [
 
 export default function Page() {
    return (
-      <div className="w-full flex flex-col py-10">
+      <div className="w-full flex flex-col">
          {/* Hero Section */}
          <div className="w-full bg-[#F9FAFB] py-20 lg:py-10">
             <div className="container mx-auto flex justify-between items-center px-4 lg:px-16">

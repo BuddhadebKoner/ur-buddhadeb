@@ -11,7 +11,7 @@ const words = [
 
 export default function Hero() {
    return (
-      <div className="w-full sm:w-3/4 lg:w-1/2 flex flex-col justify-center items-start gap-1 px-4">
+      <div className="w-full sm:w-3/4 lg:w-1/2 flex flex-col justify-center items-start gap-1 px-4 pt-20">
          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#10182]">
             Transform Your <Cover>Ideas</Cover> into Stunning Websites
          </h1>
