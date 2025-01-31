@@ -8,7 +8,7 @@ export default function Navbar() {
    const { user, isLoaded } = useUser();
 
    return (
-      <div className="w-full py-3 flex items-center justify-between border-b border-gray-300 bg-[#F9FAFB]">
+      <div className="w-full py-3 flex items-center justify-between border-b border-gray-300 bg-[#F9FAFB] fixed z-50">
          <div className="container mx-auto flex items-center justify-between px-4 lg:px-16">
             {/* Logo Section */}
             <Link href="/" className="flex items-center space-x-3">
@@ -29,6 +29,12 @@ export default function Navbar() {
                   className="lg:text-lg text-sm font-light text-gray-700 hover:text-gray-900 transition duration-200"
                >
                   Pricing
+               </Link>
+               <Link
+                  href="/component"
+                  className="lg:text-lg text-sm font-light text-gray-700 hover:text-gray-900 transition duration-200"
+               >
+                  Components
                </Link>
                {isLoaded ? (
                   user ? (

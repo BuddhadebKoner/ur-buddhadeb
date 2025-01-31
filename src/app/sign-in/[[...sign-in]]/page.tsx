@@ -39,8 +39,12 @@ export default function SignIn() {
             await signIn.create({ identifier: emailAddress, strategy: "email_code" });
             setPendingVerification(true);
          }
-      } catch (err: any) {
-         setError(err?.errors?.[0]?.message || "Something went wrong. Please try again.");
+      } catch (err: unknown) { // Change to unknown instead of any
+         if (err instanceof Error) { // Type guard to check if it's an instance of Error
+            setError(err?.message || "Something went wrong. Please try again.");
+         } else {
+            setError("Something went wrong. Please try again.");
+         }
       } finally {
          setLoading(false);
       }
@@ -55,8 +59,12 @@ export default function SignIn() {
             redirectUrl: "/sso-callback",
             redirectUrlComplete: "/",
          });
-      } catch (err: any) {
-         setError(err?.errors?.[0]?.message || "OAuth sign-in failed. Please try again.");
+      } catch (err: unknown) { // Change to unknown instead of any
+         if (err instanceof Error) { // Type guard to check if it's an instance of Error
+            setError(err?.message || "OAuth sign-in failed. Please try again.");
+         } else {
+            setError("OAuth sign-in failed. Please try again.");
+         }
       } finally {
          setLoading(false);
       }

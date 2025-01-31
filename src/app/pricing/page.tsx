@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/shared/Footer";
 import PopupForm from "@/components/shared/PopupForm";
 import PriceingCard from "@/components/shared/PriceingCard";
 import Head from "next/head";
@@ -93,10 +94,12 @@ export default function Pricing() {
          {/* Popup form */}
          {showForm && (
             <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
-               <PopupForm 
-               onClose={() => setShowForm(false)} />
+               <PopupForm
+                  onClose={() => setShowForm(false)} />
             </div>
          )}
+
+         <Footer />
       </>
    );
 }

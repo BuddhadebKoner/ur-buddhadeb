@@ -2,12 +2,13 @@
 import React from "react";
 import Hero from "@/components/shared/Hero";
 import TechCard from "@/components/shared/TechCard";
-import { Compare } from "@/components/ui/compare";
+// import { Compare } from "@/components/ui/compare";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { FlipWords } from "@/components/ui/flip-words";
 import UserBatch from "@/components/shared/UserBatch";
 import { ThreeDCard } from "@/components/shared/Card";
 import Image from "next/image";
+import Footer from "@/components/shared/Footer";
 
 const words = ["Family", "Team"];
 const techIcons = [
@@ -108,26 +109,26 @@ const projects = [
 
 export default function Page() {
    return (
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col py-10">
          {/* Hero Section */}
          <div className="w-full bg-[#F9FAFB] py-20 lg:py-10">
             <div className="container mx-auto flex justify-between items-center px-4 lg:px-16">
                <Hero />
                <div className="p-4 border rounded-3xl hidden lg:block">
-                  <Compare
+                  {/* <Compare
                      firstImage="https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/6772e34600021b7c9b90/view?project=66f8cb12003c2ead11e2&project=66f8cb12003c2ead11e2&"
                      secondImage="https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/6773109d001dbbc6d223/view?project=66f8cb12003c2ead11e2&project=66f8cb12003c2ead11e2&"
                      firstImageClassName="object-cover object-left-top"
                      secondImageClassname="object-cover object-left-top"
                      className="h-[250px] w-[200px] md:h-[500px] md:w-[500px]"
                      slideMode="hover"
-                  />
+                  /> */}
                </div>
             </div>
          </div>
 
          {/* TechCard Section */}
-         <div className="w-full h-fit bg-white py-10 lg:py-20">
+         <div className="w-full h-fit bg-white py-10 lg:py-20 z-10">
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 lg:px-16">
                {techCards.map((tech, index) => (
                   <TechCard
@@ -247,6 +248,8 @@ export default function Page() {
                </div>
             </div>
          </div>
+         
+         <Footer />
       </div>
    );
 }

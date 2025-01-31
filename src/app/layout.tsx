@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Geist, Manrope } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/shared/Navbar';
-import Footer from '@/components/shared/Footer';
 import { ClerkProvider } from '@clerk/nextjs'
 
 const geistSans = Geist({
@@ -35,7 +34,6 @@ export default function RootLayout({
             >
                <Navbar />
                {children}
-               <Footer />
             </body>
          </html>
       </ClerkProvider>
