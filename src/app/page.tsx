@@ -51,7 +51,7 @@ const teamMembers = [
    {
       image: "https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/6772e3f90016ae771776/view?project=66f8cb12003c2ead11e2&project=66f8cb12003c2ead11e2&",
       name: "Gourab Ganguly",
-      role: "Server Manager",
+      role: "Backend Developer",
       note: "Optimizing servers to ensure seamless performance and reliability ⚙️.",
    },
    {
@@ -59,12 +59,6 @@ const teamMembers = [
       name: "Devabrata Patra",
       role: "Designer",
       note: "Designing visually stunning interfaces with focus on user experience 🎨.",
-   },
-   {
-      image: "https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/670e01620001752ade56/view?project=66f8cb12003c2ead11e2&project=66f8cb12003c2ead11e2&",
-      name: "Rahul Tantubay",
-      role: "Product Manager",
-      note: "Leading product strategy to align with user needs and goals 🚀.",
    },
    {
       image: "https://qrattender.rajislab.com/assets/team/MD-RAJIBUL-ISLAM.jpeg",

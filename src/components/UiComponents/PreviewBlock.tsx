@@ -1,3 +1,5 @@
+"use client";
+
 // PreviewComponent
 export default function PreviewComponent({ children }: { children: React.ReactNode }) {
    return (
