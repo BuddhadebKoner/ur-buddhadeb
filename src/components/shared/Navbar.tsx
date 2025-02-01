@@ -31,7 +31,7 @@ export default function Navbar() {
                   Pricing
                </Link>
                <Link
-                  href="/component"
+                  href="/component/buttons"
                   className="lg:text-lg text-sm font-light text-gray-700 hover:text-gray-900 transition duration-200"
                >
                   Components
