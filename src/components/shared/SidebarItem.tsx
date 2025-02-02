@@ -13,7 +13,7 @@ interface SidebarItemProps {
 }
 
 const SidebarItem: React.FC<SidebarItemProps> = ({ title, links, titleIcon }) => {
-   const pathname = usePathname();
+   const pathname = usePathname() || "";
    const [isOpen, setIsOpen] = useState(false);
 
    useEffect(() => {

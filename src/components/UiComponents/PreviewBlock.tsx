@@ -1,10 +1,16 @@
 "use client";
 
-// PreviewComponent
-export default function PreviewComponent({ children }: { children: React.ReactNode }) {
+interface PreviewComponentProps {
+   content: string;
+}
+
+export default function PreviewComponent({ content }: PreviewComponentProps) {
+   console.log(typeof content);  
+
    return (
-      <div className="flex gap-4">
-         {children}
-      </div>
+      <div
+         className="flex gap-4"
+         dangerouslySetInnerHTML={{ __html: content }}
+      />
    );
 }
