@@ -7,7 +7,7 @@ interface ComponentData {
    uiName: string;
    codeFileName: string;
    code: string;
-   additionalFields?: Record<string, any>;
+   additionalFields?: Record<string, unknown>; 
 }
 
 type ResponseData =

@@ -1,7 +1,6 @@
 "use client";
 
-import parse, { domToReact } from "html-react-parser";
-import { HTMLReactParserOptions } from "html-react-parser";
+import parse, { domToReact, HTMLReactParserOptions, DOMNode, Element } from "html-react-parser";
 import { useMemo } from "react";
 
 interface PreviewComponentProps {
@@ -13,13 +12,13 @@ export default function PreviewComponent({ code }: PreviewComponentProps) {
 
    const jsxContent = useMemo(() => {
       const options: HTMLReactParserOptions = {
-         replace: (domNode: any) => {
-            if (domNode.attribs) {
-               if (domNode.attribs.class) {
+         replace: (domNode: DOMNode) => {
+            if (domNode instanceof Element && domNode.attribs) {
+               if ("class" in domNode.attribs) {
                   domNode.attribs.className = domNode.attribs.class;
                   delete domNode.attribs.class;
                }
-               return domToReact(domNode.children, options);
+               return domToReact(domNode.children as DOMNode[], options);
             }
          },
       };
