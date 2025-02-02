@@ -79,29 +79,6 @@ const sidebarItems = [
          { name: "Counters", href: "/component/counters" },
       ],
    },
-   {
-      title: "Advanced",
-      titleIcon: "/icons/action.svg",
-      links: [
-         { name: "Date Pickers", href: "/component/date-pickers" },
-         { name: "Time Pickers", href: "/component/time-pickers" },
-         { name: "Calendars", href: "/component/calendars" },
-         { name: "Kanban Boards", href: "/component/kanban" },
-         { name: "Chat UI", href: "/component/chat" },
-         { name: "Code Editors", href: "/component/code-editors" },
-      ],
-   },
-   {
-      title: "Settings",
-      titleIcon: "/icons/action.svg",
-      links: [
-         { name: "Profile", href: "/component/profile" },
-         { name: "Billing", href: "/component/billing" },
-         { name: "Notifications", href: "/component/notifications" },
-         { name: "Security", href: "/component/security" },
-         { name: "Themes", href: "/component/themes" },
-      ],
-   },
 ];
 
 export default function Sidebar() {

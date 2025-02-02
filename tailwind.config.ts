@@ -8,6 +8,13 @@ export default {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 		"./your-dynamic-content-source/**/*.html"
 	],
+	safelist: [
+		"px-6", "py-2", "rounded-lg", "font-medium", "bg-pink-600", "text-white",
+		"relative", "overflow-hidden", "absolute", "left-0", "top-0", "w-full",
+		"h-full", "bg-pink-500", "transform", "translate-x-full", "group-hover:translate-x-0",
+		"transition", "duration-300", "ease-in-out", "border-2", "border-transparent",
+		"hover:border-blue-500", "hover:text-blue-500"
+	],
 	theme: {
 		extend: {
 			colors: {

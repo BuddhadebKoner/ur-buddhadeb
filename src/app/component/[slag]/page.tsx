@@ -10,7 +10,6 @@ interface ComponentData {
    category: string;
    uiName: string;
    codeFileName: string;
-   content: string;
    code: string;
    createdAt: string;
    updatedAt: string;
@@ -21,12 +20,10 @@ export default function Page() {
    const params = useParams();
    const category = (params?.slag as string) || "buttons";
 
-   // State for components, loading, and error
    const [components, setComponents] = useState<ComponentData[]>([]);
    const [loading, setLoading] = useState<boolean>(true);
    const [error, setError] = useState<string>("");
 
-   // Cache for storing fetched data to avoid redundant API calls
    const cacheRef = useRef<Map<string, ComponentData[]>>(new Map());
 
    useEffect(() => {
@@ -47,7 +44,9 @@ export default function Page() {
                throw new Error("Failed to fetch components");
             }
 
-            const data: { components: ComponentData[] } = await response.json(); 
+            // console.log("Response:", response);
+
+            const data: { components: ComponentData[] } = await response.json();
 
             cacheRef.current.set(category, data.components || []);
             setComponents(data.components || []);
@@ -67,12 +66,10 @@ export default function Page() {
       fetchComponents();
    }, [category]);
 
-   // Memoize components to prevent unnecessary re-renders
    const renderedComponents = useMemo(() => {
       return components.map((component) => (
          <ShareComponent
             key={component._id}
-            content={component.content}
             code={component.code}
             uiName={component.uiName}
             codeFileName={component.codeFileName}
@@ -96,7 +93,7 @@ export default function Page() {
          {loading ? (
             <div className="w-full h-full flex items-center justify-center">
                <p>Loading components...</p>
-           </div>
+            </div>
          ) : error ? (
             <p className="text-red-400">Error: {error}</p>
          ) : (
@@ -107,3 +104,5 @@ export default function Page() {
       </div>
    );
 }
+
+

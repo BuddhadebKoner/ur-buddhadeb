@@ -5,12 +5,10 @@ import PreviewComponent from "./PreviewBlock";
 import CodeComponent from "./CodeBlock";
 
 export default function ShareComponent({
-   content,
    code,
    uiName,
    codeFileName,
 }: {
-   content: string;
    code: string;
    uiName: string;
    codeFileName: string;
@@ -41,7 +39,7 @@ export default function ShareComponent({
             </div>
             <div className="rounded-xl w-full text-center">
                {activeTab === "preview" ? (
-                  <PreviewComponent content={content} />
+                  <PreviewComponent code={code} />
                ) : (
                   <CodeComponent code={code} codeFileName={codeFileName} />
                )}
