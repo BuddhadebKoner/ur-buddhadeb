@@ -9,7 +9,20 @@ export default {
 		"./your-dynamic-content-source/**/*.html"
 	],
 	"safelist": [
-		"flex", "items-center", "gap-2", "px-4", "py-2", "bg-blue-600", "text-white", "font-semibold", "rounded-lg", "shadow-md", "hover:bg-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-500", "w-5", "h-5", "border-2", "border-white", "border-t-transparent", "rounded-full", "animate-spin", "bg-green-600", "hover:bg-green-700", "focus:ring-green-500", "flex", "gap-1", "w-2", "h-2", "bg-white", "rounded-full", "animate-bounce", "delay-150", "delay-300", "transition-all", "duration-300", "bg-transparent", "border-green-600", "hover:bg-green-600", "hover:text-white", "hover:shadow-lg", "focus:ring-green-500", "bg-red-700", "hover:bg-red-800", "focus:ring-red-500", "text-green-600", "border-red-700", "hover:bg-red-700", "hover:text-white", "hover:shadow-lg", "focus:ring-red-500"
+		"group", "relative", "w-80", "bg-gradient-to-br", "from-gray-900", "to-gray-800", "rounded-3xl", "overflow-hidden", "shadow-lg", "hover:shadow-2xl", "transition-all", "duration-300", "ease-in-out", "transform", "hover:-translate-y-2",
+		"relative", "w-full", "h-48", "object-cover", "transition-transform", "duration-500", "group-hover:scale-105",
+		"absolute", "inset-0", "bg-black", "bg-opacity-30", "group-hover:bg-opacity-50", "transition", "duration-500",
+		"p-6", "flex", "flex-col", "items-start",
+		"text-xl", "font-bold", "text-white",
+		"text-sm", "text-gray-300", "mt-2",
+		"mt-4", "px-5", "py-2.5", "bg-gradient-to-r", "from-blue-500", "to-blue-700", "text-white", "font-semibold", "rounded-lg", "text-sm", "transition-all", "duration-300", "hover:from-blue-600", "hover:to-blue-800", "hover:scale-105",
+		"flex", "items-center", "gap-2", "px-4", "py-2", "bg-green-600", "text-white", "font-semibold", "rounded-lg", "shadow-md", "hover:bg-green-700", "focus:outline-none", "focus:ring-2", "focus:ring-green-500", "transition-all", "duration-300",
+		"bg-transparent", "text-green-600", "border-2", "border-green-600", "hover:bg-green-600", "hover:text-white", "hover:shadow-lg",
+		"bg-red-700", "hover:bg-red-800", "focus:ring-red-500",
+		"text-red-700", "border-red-700", "hover:bg-red-700",
+		"bg-blue-600", "hover:bg-blue-700", "focus:ring-blue-500",
+		"w-5", "h-5", "border-2", "border-white", "border-t-transparent", "rounded-full", "animate-spin",
+		"flex", "gap-1", "w-2", "h-2", "bg-white", "rounded-full", "animate-bounce", "delay-150", "delay-300"
 	],
 	theme: {
 		extend: {
