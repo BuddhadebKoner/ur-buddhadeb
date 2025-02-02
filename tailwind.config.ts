@@ -8,12 +8,8 @@ export default {
 		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 		"./your-dynamic-content-source/**/*.html"
 	],
-	safelist: [
-		"px-6", "py-2", "rounded-lg", "font-medium", "bg-pink-600", "text-white",
-		"relative", "overflow-hidden", "absolute", "left-0", "top-0", "w-full",
-		"h-full", "bg-pink-500", "transform", "translate-x-full", "group-hover:translate-x-0",
-		"transition", "duration-300", "ease-in-out", "border-2", "border-transparent",
-		"hover:border-blue-500", "hover:text-blue-500"
+	"safelist": [
+		"flex", "items-center", "gap-2", "px-4", "py-2", "bg-blue-600", "text-white", "font-semibold", "rounded-lg", "shadow-md", "hover:bg-blue-700", "focus:outline-none", "focus:ring-2", "focus:ring-blue-500", "w-5", "h-5", "border-2", "border-white", "border-t-transparent", "rounded-full", "animate-spin", "bg-green-600", "hover:bg-green-700", "focus:ring-green-500", "flex", "gap-1", "w-2", "h-2", "bg-white", "rounded-full", "animate-bounce", "delay-150", "delay-300", "transition-all", "duration-300", "bg-transparent", "border-green-600", "hover:bg-green-600", "hover:text-white", "hover:shadow-lg", "focus:ring-green-500", "bg-red-700", "hover:bg-red-800", "focus:ring-red-500", "text-green-600", "border-red-700", "hover:bg-red-700", "hover:text-white", "hover:shadow-lg", "focus:ring-red-500"
 	],
 	theme: {
 		extend: {
@@ -81,3 +77,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

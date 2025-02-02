@@ -25,5 +25,5 @@ export default function PreviewComponent({ code }: PreviewComponentProps) {
       return parse(code, options);
    }, [code]);
 
-   return <div className="w-full">{jsxContent}</div>;
+   return <div className="w-fit flex flex-wrap gap-2">{jsxContent}</div>;
 }

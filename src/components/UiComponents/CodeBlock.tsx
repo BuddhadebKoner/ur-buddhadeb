@@ -12,7 +12,7 @@ export default function CodeComponent({
    codeFileName,
 }: CodeComponentProps) {
    return (
-      <div className="max-w-3xl mx-auto w-full">
+      <div className="mx-auto">
          <CodeBlock language="jsx" filename={codeFileName} code={code} />
       </div>
    );
