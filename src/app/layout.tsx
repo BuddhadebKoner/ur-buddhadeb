@@ -3,6 +3,7 @@ import { Geist, Manrope } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/shared/Navbar';
 import { ClerkProvider } from '@clerk/nextjs'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
    variable: '--font-geist-sans',
@@ -34,6 +35,7 @@ export default function RootLayout({
             >
                <Navbar />
                {children}
+               <SpeedInsights />
             </body>
          </html>
       </ClerkProvider>
