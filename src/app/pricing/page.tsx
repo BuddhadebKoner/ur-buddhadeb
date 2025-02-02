@@ -70,7 +70,7 @@ export default function Pricing() {
             <title>Pricing Plans</title>
             <meta property="og:title" content="Pricing Plans" key="title" />
          </Head>
-         <div className="w-full min-h-[80vh] flex flex-col">
+         <div className="w-full min-h-[80vh] flex flex-col py-16">
             <div className="w-full bg-[url('/levelBg.jpg')] py-3 lg:py-2">
                <div className="container mx-auto flex justify-between items-center px-4 lg:px-16">
                   <h1 className="text-white font-semibold text-xs lg:text-sm">

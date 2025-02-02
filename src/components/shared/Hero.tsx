@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Cover } from "../ui/cover";
 import { LinkPreview } from "../ui/link-preview";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
@@ -22,9 +23,11 @@ export default function Hero() {
                Github
             </LinkPreview>
          </div>
-         <button className="bg-black text-white rounded-full py-2 px-6 text-sm font-semibold hover:bg-gray-800 transition-colors mt-5">
+         <Link
+         href={"/component"}
+            className="bg-black text-white rounded-full py-2 px-6 text-sm font-semibold hover:bg-gray-800 transition-colors mt-5">
             Get Started
-         </button>
+         </Link>
       </div>
    );
 }
