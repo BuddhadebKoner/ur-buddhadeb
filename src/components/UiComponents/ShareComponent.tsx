@@ -24,8 +24,8 @@ export default function ShareComponent({
             <div className="flex flex-wrap gap-4 mb-2">
                <button
                   className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === "preview"
-                        ? "bg-gray-200 text-gray-900"
-                        : "text-white"
+                     ? "bg-gray-200 text-gray-900"
+                     : "text-white"
                      }`}
                   onClick={() => setActiveTab("preview")}
                >
@@ -33,8 +33,8 @@ export default function ShareComponent({
                </button>
                <button
                   className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${activeTab === "code"
-                        ? "bg-gray-200 text-gray-900"
-                        : "text-white shadow-md"
+                     ? "bg-gray-200 text-gray-900"
+                     : "text-white shadow-md"
                      }`}
                   onClick={() => setActiveTab("code")}
                >

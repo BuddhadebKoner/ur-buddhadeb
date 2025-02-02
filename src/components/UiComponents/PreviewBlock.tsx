@@ -8,7 +8,7 @@ interface PreviewComponentProps {
 }
 
 export default function PreviewComponent({ code }: PreviewComponentProps) {
-   console.log("Raw Content:", code);
+   // console.log("Raw Content:", code);
 
    const jsxContent = useMemo(() => {
       const options: HTMLReactParserOptions = {
@@ -25,5 +25,5 @@ export default function PreviewComponent({ code }: PreviewComponentProps) {
       return parse(code, options);
    }, [code]);
 
-   return <div className="w-fit flex flex-wrap gap-2">{jsxContent}</div>;
+   return <div className="w-full flex justify-center text-start flex-wrap gap-2">{jsxContent}</div>;
 }

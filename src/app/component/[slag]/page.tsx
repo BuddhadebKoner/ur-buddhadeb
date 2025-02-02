@@ -79,7 +79,7 @@ export default function Page() {
 
    return (
       <div className="w-full h-[100vh] flex flex-col items-start pt-20 px-5 text-white overflow-auto z-10">
-         <h1 className="lg:text-3xl text-xl font-bold">Components: Copy and Use</h1>
+         <h1 className="lg:text-3xl text-xl font-bold">Tailwind Components: Copy and Use</h1>
          <div className="w-full flex gap-2 mt-5 font-mono text-sm lg:text-base">
             <Link className="text-blue-300" href="/">
                Home{" /"}

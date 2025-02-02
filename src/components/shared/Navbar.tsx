@@ -8,7 +8,7 @@ export default function Navbar() {
    const { user, isLoaded } = useUser();
 
    return (
-      <div className="w-full py-3 flex items-center justify-between border-b border-gray-300 bg-[#F9FAFB] fixed z-50">
+      <div className="w-full py-3 flex items-center justify-between border-b border-gray-300 bg-[#F9FAFB]/50 backdrop-blur-[10px] fixed z-50">
          <div className="container mx-auto flex items-center justify-between px-4 lg:px-16">
             {/* Logo Section */}
             <Link href="/" className="flex items-center space-x-3">
@@ -19,7 +19,7 @@ export default function Navbar() {
                   src="https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/6772e34600021b7c9b90/view?project=66f8cb12003c2ead11e2&project=66f8cb12003c2ead11e2&"
                   alt="logo"
                />
-               <h1 className="lg:text-2xl font-semibold lg:font-light text-gray-800">Ur Buddhadeb</h1>
+               <h1 className="lg:text-2xl hidden lg:block font-semibold lg:font-light text-gray-800">Ur Buddhadeb</h1>
             </Link>
 
             {/* Navigation Links */}
@@ -46,7 +46,7 @@ export default function Navbar() {
                   ) : (
                      <Link
                         href="/sign-in"
-                        className="text-sm bg-black text-white lg:px-4 px-2 py-1 lg:py-2 rounded-full hover:bg-gray-800 transition duration-200"
+                        className="text-xs lg:text-sm bg-black text-white lg:px-4 px-2 py-1 lg:py-2 rounded-full hover:bg-gray-800 transition duration-200"
                      >
                         Sign In
                      </Link>
