@@ -59,8 +59,10 @@ const pricingData = [
 
 export default function Pricing() {
    const [showForm, setShowForm] = useState(false);
+   const [choosePlan, setChoosePlan] = useState("");
 
-   const handleGetStartedClick = () => {
+   const handleGetStartedClick = (title: string) => {
+      setChoosePlan(title);
       setShowForm(true);
    };
 
@@ -70,16 +72,19 @@ export default function Pricing() {
             <title>Pricing Plans</title>
             <meta property="og:title" content="Pricing Plans" key="title" />
          </Head>
-         <div className="w-full min-h-[80vh] flex flex-col py-16">
-            <div className="w-full bg-[url('/levelBg.jpg')] py-3 lg:py-2">
-               <div className="container mx-auto flex justify-between items-center px-4 lg:px-16">
-                  <h1 className="text-white font-semibold text-xs lg:text-sm">
+         <div className="w-full min-h-screen flex flex-col py-16 dark:bg-[#181818]">
+            {/* Pricing Notice */}
+            <div className="w-full bg-[url('/levelBg.jpg')] bg-cover bg-center py-3 lg:py-2 dark:bg-gray-900/80">
+               <div className="container mx-auto flex justify-center lg:justify-between items-center px-4 lg:px-16">
+                  <h1 className="text-white dark:text-gray-300 font-medium text-xs lg:text-sm text-center lg:text-left">
                      All prices are base starting points and will vary based on website requirements.
                   </h1>
                </div>
             </div>
+
+            {/* Pricing Plans */}
             <div className="w-full lg:py-10 py-5">
-               <div className="container mx-auto flex justify-evenly items-center px-4 lg:px-16 flex-wrap">
+               <div className="container mx-auto flex justify-center lg:justify-evenly items-center px-4 lg:px-16 flex-wrap gap-6">
                   {pricingData.map((plan, index) => (
                      <PriceingCard
                         key={index}
@@ -89,17 +94,17 @@ export default function Pricing() {
                   ))}
                </div>
             </div>
+
+            {/* Popup Form */}
+            {showForm && (
+               <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 dark:bg-gray-800 dark:bg-opacity-60 backdrop-blur-md z-50">
+                  <PopupForm
+                     title={choosePlan}
+                     onClose={() => setShowForm(false)}
+                  />
+               </div>
+            )}
          </div>
-
-         {/* Popup form */}
-         {showForm && (
-            <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
-               <PopupForm
-                  onClose={() => setShowForm(false)} />
-            </div>
-         )}
-
-         <Footer />
       </>
    );
 }

@@ -39,8 +39,8 @@ export default function SignIn() {
             await signIn.create({ identifier: emailAddress, strategy: "email_code" });
             setPendingVerification(true);
          }
-      } catch (err: unknown) { // Change to unknown instead of any
-         if (err instanceof Error) { // Type guard to check if it's an instance of Error
+      } catch (err: unknown) { 
+         if (err instanceof Error) {
             setError(err?.message || "Something went wrong. Please try again.");
          } else {
             setError("Something went wrong. Please try again.");
@@ -56,11 +56,11 @@ export default function SignIn() {
       try {
          await signIn.authenticateWithRedirect({
             strategy,
-            redirectUrl: "/sso-callback",
+            redirectUrl: "/",
             redirectUrlComplete: "/",
          });
-      } catch (err: unknown) { // Change to unknown instead of any
-         if (err instanceof Error) { // Type guard to check if it's an instance of Error
+      } catch (err: unknown) {
+         if (err instanceof Error) { 
             setError(err?.message || "OAuth sign-in failed. Please try again.");
          } else {
             setError("OAuth sign-in failed. Please try again.");
@@ -84,7 +84,7 @@ export default function SignIn() {
    };
 
    return (
-      <div className="w-full h-[80vh] flex justify-center items-center">
+      <div className="w-full min-h-screen flex justify-center items-center">
          <div className="max-w-md w-full p-6 bg-white dark:bg-black rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 text-center">
                Secure Access Made Simple

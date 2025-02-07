@@ -105,24 +105,14 @@ export default function Page() {
    return (
       <div className="w-full flex flex-col">
          {/* Hero Section */}
-         <div className="w-full bg-[#F9FAFB] py-20 lg:py-10">
+         <div className="w-full bg-white dark:bg-[#000000] py-20 lg:py-10">
             <div className="container mx-auto flex justify-between items-center px-4 lg:px-16">
                <Hero />
-               <div className="p-4 border rounded-3xl hidden lg:block">
-                  {/* <Compare
-                     firstImage="https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/6772e34600021b7c9b90/view?project=66f8cb12003c2ead11e2&project=66f8cb12003c2ead11e2&"
-                     secondImage="https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/6773109d001dbbc6d223/view?project=66f8cb12003c2ead11e2&project=66f8cb12003c2ead11e2&"
-                     firstImageClassName="object-cover object-left-top"
-                     secondImageClassname="object-cover object-left-top"
-                     className="h-[250px] w-[200px] md:h-[500px] md:w-[500px]"
-                     slideMode="hover"
-                  /> */}
-               </div>
             </div>
          </div>
 
          {/* TechCard Section */}
-         <div className="w-full h-fit bg-white py-10 lg:py-20 z-10">
+         <div className="w-full h-fit bg-white dark:bg-[#121212] py-10 lg:py-20 z-10">
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 lg:px-16">
                {techCards.map((tech, index) => (
                   <TechCard
@@ -139,22 +129,22 @@ export default function Page() {
          </div>
 
          {/* Main Links Section */}
-         <div className="w-full bg-[#F9FAFB] py-20 lg:py-40">
+         <div className="w-full bg-[#F9FAFB] dark:bg-[#121212] py-20 lg:py-40">
             <div className="container mx-auto px-4 lg:px-16 flex justify-between items-center flex-wrap">
                <div className="lg:w-1/2 w-full flex flex-col items-start justify-center gap-5">
-                  <div className="text-xl md:text-3xl">
+                  <div className="text-xl md:text-3xl text-black dark:text-white">
                      Ready to{" "}
-                     <LinkPreview url="https://buddhadebkoner.rajislab.com" className="font-bold text-[#FF6900]">
+                     <LinkPreview url="https://buddhadebkoner.rajislab.com" className="font-bold text-[#FF6900] dark:text-[#FF4500]">
                         Launch Your Dream Website?
                      </LinkPreview>{" "}
                      Let&apos;s make it happen!
                   </div>
-                  <p className="text-[#6A7282] text-base md:text-xl">
+                  <p className="text-[#6A7282] dark:text-gray-400 text-base md:text-xl">
                      Get started with our cutting-edge templates and powerful tools designed to elevate your SaaS product. Skip the hassle of boilerplate code and focus on building what truly matters to your business.
                   </p>
                </div>
                <div className="lg:w-1/2 w-full lg:h-full h-36 flex items-center lg:justify-center justify-start">
-                  <button className="bg-black text-white rounded-full py-2 px-6 text-sm font-semibold hover:bg-gray-800 transition-colors">
+                  <button className="bg-black dark:bg-white text-white dark:text-black rounded-full py-2 px-6 text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-300 transition-colors">
                      Contact Us
                   </button>
                </div>
@@ -162,14 +152,15 @@ export default function Page() {
          </div>
 
 
+
          {/* team details */}
-         <div className="w-full bg-white py-10 lg:py-20">
+         <div className="w-full bg-white dark:bg-[#121212] py-10 lg:py-20">
             <div className="container mx-auto px-4 lg:px-16">
                {/* Heading Section */}
                <div className="w-full text-center mb-10">
-                  <h2 className="text-2xl lg:text-4xl font-semibold text-neutral-800">
+                  <h2 className="text-2xl lg:text-4xl font-semibold text-neutral-800 dark:text-white">
                      We Are
-                     <span className="ml-2 text-blue-600">
+                     <span className="ml-2 text-blue-600 dark:text-blue-400">
                         <FlipWords words={words} />
                      </span>
                   </h2>
@@ -192,18 +183,19 @@ export default function Page() {
             </div>
          </div>
 
+
          {/* project showcase */}
-         <div className="w-full bg-[#F9FAFB] py-10 lg:py-20">
-            <div className="container mx-auto px-4 flex justify-evenly items-center flex-wrap">
+         <div className="w-full bg-[#F9FAFB] dark:bg-[#121212] py-10 lg:py-20">
+            <div className="container mx-auto px-4">
                {/* Heading Section */}
                <div className="w-full text-center mb-10">
-                  <h2 className="text-2xl lg:text-4xl font-semibold text-neutral-800">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-800 dark:text-white">
                      I&apos;ve Delivered Some Cool Websites
                   </h2>
                </div>
 
                {/* Projects Display Section */}
-               <div className="w-full flex justify-evenly items-center flex-wrap">
+               <div className="w-full h-fit flex flex-wrap gap-6 justify-center">
                   {projects.map((project, index) => (
                      <ThreeDCard
                         key={index}
@@ -223,27 +215,26 @@ export default function Page() {
          </div>
 
          {/* Tech Showcase */}
-         <div className="w-full bg-[#F9FAFB] py-10 lg:py-20">
+         <div className="w-full bg-[#F9FAFB] dark:bg-[#121212] py-10 lg:py-20">
             <div className="container mx-auto px-4">
-               <div className="flex justify-evenly items-center flex-wrap gap-4">
+               <div className="flex justify-center flex-wrap gap-6">
                   {techIcons.map((icon, index) => (
-                     <div className="flex items-center gap-2" key={index}>
+                     <div className="flex items-center gap-3" key={index}>
                         <Image
-                           key={index}
-                           className="w-9 sm:w-10 md:w-20 lg:w-22"
+                           className="w-10 sm:w-12 md:w-16 lg:w-20"
                            src={icon.src}
                            alt={icon.alt}
-                           width={0}
-                           height={0}
+                           width={50}
+                           height={50}
                         />
-                        <h1 className="text-[#A8A8A8] lg:text-2xl md:text-xl font-semibold">{icon.alt}</h1>
+                        <h1 className="text-gray-500 dark:text-gray-300 lg:text-2xl md:text-xl font-semibold">
+                           {icon.alt}
+                        </h1>
                      </div>
                   ))}
                </div>
             </div>
          </div>
-         
-         <Footer />
       </div>
    );
 }

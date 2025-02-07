@@ -4,6 +4,8 @@ import './globals.css';
 import Navbar from '../components/shared/Navbar';
 import { ClerkProvider } from '@clerk/nextjs'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { QueryProvider } from '../../utils/react-query/QueryProvider';
+import Footer from '@/components/shared/Footer';
 
 const geistSans = Geist({
    variable: '--font-geist-sans',
@@ -33,8 +35,11 @@ export default function RootLayout({
             <body
                className={`${manrope.variable} ${geistSans.variable} antialiased`}
             >
-               <Navbar />
-               {children}
+               <QueryProvider>
+                  <Navbar />
+                  {children}
+                  <Footer />
+               </QueryProvider>
                <SpeedInsights />
             </body>
          </html>

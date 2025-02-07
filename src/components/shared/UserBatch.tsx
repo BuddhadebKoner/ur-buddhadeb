@@ -11,7 +11,7 @@ export default function UserBatch({
    };
 }) {
    return (
-      <div className="w-fit h-fit flex flex-col justify-center items-start gap-4 p-4 rounded-lg shadow-md cursor-pointer">
+      <div className="w-fit h-fit flex flex-col justify-center items-start gap-4 p-4 rounded-lg shadow-md cursor-pointer bg-white dark:bg-[#1A1A1A]">
          {/* User Info Section */}
          <div className="flex justify-start items-center gap-4">
             <Image
@@ -22,13 +22,17 @@ export default function UserBatch({
                alt={user.name}
             />
             <div className="flex flex-col justify-start items-start">
-               <h1 className="text-lg font-semibold text-neutral-800">{user.name}</h1>
-               <h2 className="text-sm font-medium text-neutral-600">{user.role}</h2>
+               <h1 className="text-lg font-semibold text-neutral-800 dark:text-white">
+                  {user.name}
+               </h1>
+               <h2 className="text-sm font-medium text-neutral-600 dark:text-gray-400">
+                  {user.role}
+               </h2>
             </div>
          </div>
 
          {/* User Note */}
-         <p className="text-sm text-neutral-700">{user.note}</p>
+         <p className="text-sm text-neutral-700 dark:text-gray-300">{user.note}</p>
       </div>
    );
 }
