@@ -49,7 +49,7 @@ export default function Navbar() {
             </Link>
 
             {/* Navigation Links */}
-            <div className="flex items-center lg:space-x-6 space-x-2">
+            <div className="flex items-center justify-center lg:space-x-6 space-x-2">
                <Link
                   href="/pricing"
                   className="lg:text-lg text-sm font-light text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition duration-200"
@@ -91,13 +91,16 @@ export default function Navbar() {
                {/* Dark/Light Mode Toggle */}
                <button
                   onClick={toggleDarkMode}
-                  className="text-gray-700 dark:text-gray-300 focus:outline-none"
+                  className="text-gray-700 dark:text-gray-300 focus:outline-none transition-transform duration-300 ease-in-out"
                >
-                  {isDarkMode ? (
-                     <span className="text-2xl">🌙</span>
-                  ) : (
-                     <span className="text-2xl">🌞</span>
-                  )}
+                  <span className={`text-2xl inline-block transition-transform duration-300 ${isDarkMode ? "rotate-[270deg]" : "rotate-[90deg]"}`}>
+                     <Image
+                        width={20}
+                        height={20}
+                        src={isDarkMode ? "/icons/dark_mode.svg" : "/icons/light_mode.svg"}
+                        alt={isDarkMode ? "moon" : "sun"}
+                     />
+                  </span>
                </button>
             </div>
          </div>
