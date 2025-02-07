@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/shared/Footer";
 import PopupForm from "@/components/shared/PopupForm";
 import PriceingCard from "@/components/shared/PriceingCard";
 import Head from "next/head";

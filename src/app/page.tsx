@@ -2,13 +2,11 @@
 import React from "react";
 import Hero from "@/components/shared/Hero";
 import TechCard from "@/components/shared/TechCard";
-// import { Compare } from "@/components/ui/compare";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { FlipWords } from "@/components/ui/flip-words";
 import UserBatch from "@/components/shared/UserBatch";
 import { ThreeDCard } from "@/components/shared/Card";
 import Image from "next/image";
-import Footer from "@/components/shared/Footer";
 
 const words = ["Family", "Team"];
 const techIcons = [
