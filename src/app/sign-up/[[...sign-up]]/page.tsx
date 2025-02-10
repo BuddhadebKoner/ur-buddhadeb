@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 export default function SignUp() {
    const { isLoaded, signUp } = useSignUp();
    const [emailAddress, setEmailAddress] = useState("");
+   const [firstname, setFirstname] = useState("");
+   const [lastname, setLastname] = useState("");
    const [username, setUsername] = useState("");
    const [pendingVerification, setPendingVerification] = useState(false);
    const [code, setCode] = useState(["", "", "", "", "", ""]);
@@ -27,7 +29,8 @@ export default function SignUp() {
          if (pendingVerification) {
             const verificationCode = code.join("");
             await signUp.attemptEmailAddressVerification({ code: verificationCode });
-            router.push("/");
+            router.push("/sign-in");
+
          } else {
             await signUp.create({ emailAddress, username });
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
@@ -53,26 +56,61 @@ export default function SignUp() {
       setCode(newCode);
       if (value && index < code.length - 1) {
          document.getElementById(`code-${index + 1}`)?.focus();
-      }
+      }  
    };
 
    return (
-      <div className="w-full min-h-screen flex justify-center items-center">
-         <div className="max-w-md w-full mx-auto p-6 bg-white dark:bg-black rounded-lg shadow-lg">
+      <div className="w-full min-h-screen flex justify-center items-center bg-white dark:bg-black">
+         <div className="max-w-lg w-full mx-auto p-6 bg-white dark:bg-black rounded-lg shadow-lg">
+
+            {(!isLoaded || isSubmitting) && (
+               <div className="absolute inset-0 bg-white/10 dark:bg-black/30 backdrop-blur-md flex items-center justify-center z-10">
+                  <span className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                     {isSubmitting ? "Processing..." : "Loading..."}
+                  </span>
+               </div>
+            )}
+
             <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 text-center">
-               Secure Access Made Simple
+               Register For An Account
             </h2>
             <p className="text-neutral-600 dark:text-neutral-400 text-center mt-2">
-               This website is not in production yet. Please wait for the official release.
+               Please read the terms and conditions before signing up.
             </p>
 
             <form className="mt-6 space-y-4" onSubmit={handleSignUpWithEmail}>
                {!pendingVerification ? (
                   <>
+                     <div className="flex gap-4">
+                        <div className="mb-4">
+                           <Label htmlFor="firstName">First Name</Label>
+                           <Input
+                              id="firstName"
+                              placeholder="Enter your first name"
+                              type="text"
+                              value={firstname}
+                              onChange={(e) => setFirstname(e.target.value)}
+                              required
+                           />
+                        </div>
+
+                        <div className="mb-4">
+                           <Label htmlFor="lastName">Last Name</Label>
+                           <Input
+                              id="lastName"
+                              placeholder="Enter your last name"
+                              type="text"
+                              value={lastname}
+                              onChange={(e) => setLastname(e.target.value)}
+                              required
+                           />
+                        </div>
+                     </div>
+
                      <div className="mb-4">
-                        <Label htmlFor="username">Username</Label>
+                        <Label htmlFor="userName">User Name</Label>
                         <Input
-                           id="username"
+                           id="userName"
                            placeholder="Enter your username"
                            type="text"
                            value={username}
@@ -80,6 +118,7 @@ export default function SignUp() {
                            required
                         />
                      </div>
+
                      <div className="mb-4">
                         <Label htmlFor="email">Email Address</Label>
                         <Input
@@ -102,6 +141,7 @@ export default function SignUp() {
                   </>
                ) : (
                   <>
+                     {/* otp section */}
                      <div className="mb-4">
                         <Label htmlFor="code">Verification Code</Label>
                         <div className="flex gap-2 justify-center">
@@ -121,6 +161,8 @@ export default function SignUp() {
                            ))}
                         </div>
                      </div>
+                     {/* capture code clerk-captcha */}
+                     <div id="clerk-captcha"></div>
                      <button
                         className="w-full h-10 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition"
                         type="submit"

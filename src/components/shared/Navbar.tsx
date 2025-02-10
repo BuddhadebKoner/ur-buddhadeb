@@ -74,7 +74,7 @@ export default function Navbar() {
                   ) : (
                      <Link
                         href="/sign-in"
-                        className="text-xs lg:text-sm bg-black dark:bg-gray-800 text-white lg:px-4 px-2 py-1 lg:py-2 rounded-full hover:bg-gray-800 dark:hover:bg-gray-700 transition duration-200"
+                        className="text-xs lg:text-sm bg-black dark:bg-gray-800 text-white lg:px-4 px-2 py-1 lg:py-2 rounded-sm hover:bg-gray-800 dark:hover:bg-gray-700 transition duration-200"
                      >
                         Sign In
                      </Link>

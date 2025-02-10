@@ -39,7 +39,7 @@ export default function SignIn() {
             await signIn.create({ identifier: emailAddress, strategy: "email_code" });
             setPendingVerification(true);
          }
-      } catch (err: unknown) { 
+      } catch (err: unknown) {
          if (err instanceof Error) {
             setError(err?.message || "Something went wrong. Please try again.");
          } else {
@@ -60,7 +60,7 @@ export default function SignIn() {
             redirectUrlComplete: "/",
          });
       } catch (err: unknown) {
-         if (err instanceof Error) { 
+         if (err instanceof Error) {
             setError(err?.message || "OAuth sign-in failed. Please try again.");
          } else {
             setError("OAuth sign-in failed. Please try again.");
@@ -84,13 +84,19 @@ export default function SignIn() {
    };
 
    return (
-      <div className="w-full min-h-screen flex justify-center items-center">
-         <div className="max-w-md w-full p-6 bg-white dark:bg-black rounded-lg shadow-lg">
+      <div className="w-full min-h-screen flex justify-center items-center relative bg-white dark:bg-black">
+         <div className="max-w-lg w-full p-6 bg-white dark:bg-black rounded-lg shadow-lg relative overflow-hidden">
+            {loading && (
+               <div className="absolute inset-0 bg-white/30 dark:bg-black/30 backdrop-blur-md flex items-center justify-center z-10">
+                  <span className="text-lg font-semibold text-gray-800 dark:text-gray-200">Loading...</span>
+               </div>
+            )}
+
             <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 text-center">
-               Secure Access Made Simple
+               Sign in to your account
             </h2>
             <p className="text-neutral-600 dark:text-neutral-400 text-center mt-2">
-               This website is not in production yet. Please wait for the official release.
+               Welcome back! Please sign in to continue.
             </p>
 
             <form className="mt-6 space-y-4" onSubmit={handleEmailSignIn}>
@@ -104,7 +110,7 @@ export default function SignIn() {
                            disabled={loading}
                         >
                            <IconBrandGithub className="mr-2" />
-                           {loading ? "Loading..." : "Continue with GitHub"}
+                           {"Continue with GitHub"}
                         </button>
                         <button
                            className="w-full h-10 flex items-center justify-center bg-gray-100 dark:bg-zinc-900 text-black dark:text-white rounded-md hover:bg-gray-200 dark:hover:bg-zinc-800 transition"
@@ -113,7 +119,7 @@ export default function SignIn() {
                            disabled={loading}
                         >
                            <IconBrandGoogle className="mr-2" />
-                           {loading ? "Loading..." : "Continue with Google"}
+                           {"Continue with Google"}
                         </button>
                      </div>
                      <div className="flex items-center my-6">
@@ -136,7 +142,7 @@ export default function SignIn() {
                         type="submit"
                         disabled={loading}
                      >
-                        {loading ? "Sending..." : "Send Verification Code"}
+                        {"Send Verification Code"}
                      </button>
                   </>
                ) : (
@@ -160,6 +166,8 @@ export default function SignIn() {
                            />
                         ))}
                      </div>
+                     {/* capture */}
+                     <div id="clerk-captcha"></div>
                      <button
                         className="w-full h-10 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition"
                         type="submit"

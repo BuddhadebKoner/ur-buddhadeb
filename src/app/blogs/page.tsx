@@ -16,7 +16,7 @@ export default function BlogPage() {
    const blogs = data?.pages.flatMap((page) => page.blogs) || [];
 
    return (
-      <div className="w-full min-h-screen flex flex-col items-center lg:py-10 py-20 px-4 lg:px-16 bg-gray-100 dark:bg-gray-900 transition-colors">
+      <div className="w-full min-h-screen flex flex-col items-center lg:py-10 py-20 px-4 lg:px-16 bg-gray-100 dark:bg-[#121212] transition-colors">
          {/* Heading */}
          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white text-start pt-10">
             Explore Tech Articles

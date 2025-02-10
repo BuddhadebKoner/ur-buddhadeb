@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import Hero from "@/components/shared/Hero";
 import TechCard from "@/components/shared/TechCard";
 import { LinkPreview } from "@/components/ui/link-preview";
@@ -9,6 +10,7 @@ import { ThreeDCard } from "@/components/shared/Card";
 import Image from "next/image";
 
 const words = ["Family", "Team"];
+
 const techIcons = [
    { src: "/icons/tech-next.svg", alt: "Next.js" },
    { src: "/icons/tech-tailwind.svg", alt: "Tailwind CSS" },
@@ -99,11 +101,19 @@ const projects = [
 
 
 
+
+
 export default function Page() {
+   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+
+   const toggleFAQ = (index: number) => {
+      setOpenFAQIndex(openFAQIndex === index ? null : index);
+   };
+
    return (
       <div className="w-full flex flex-col">
          {/* Hero Section */}
-         <div className="w-full bg-white dark:bg-[#000000] py-20 lg:py-10">
+         <div className="w-full bg-white dark:bg-[#121212] py-20 lg:py-10">
             <div className="container mx-auto flex justify-between items-center px-4 lg:px-16">
                <Hero />
             </div>
@@ -212,6 +222,49 @@ export default function Page() {
             </div>
          </div>
 
+         {/* faq */}
+         <div className="w-full h-fit flex flex-col px-5 pb-20 md:px-[10rem] lg:py-[10rem] bg-white dark:bg-[#121212] transition-colors duration-300">
+
+            <h3 className="text-2xl md:text-4xl font-extrabold text-start text-black dark:text-white mb-12">
+               Frequently Asked Questions
+            </h3>
+
+            <div className="space-y-8">
+               {faqData.map((faq, index) => (
+                  <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-6">
+                     <button
+                        onClick={() => toggleFAQ(index)}
+                        className="w-full text-left flex justify-between items-center py-4 text-xl font-semibold text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition-all duration-300"
+                     >
+                        <span>{faq.question}</span>
+
+                        <svg
+                           className={`w-6 h-6 text-black dark:text-white transition-transform duration-300 ${openFAQIndex === index ? 'rotate-180' : ''
+                              }`}
+                           fill="none"
+                           stroke="currentColor"
+                           strokeWidth="2"
+                           viewBox="0 0 24 24"
+                           xmlns="http://www.w3.org/2000/svg"
+                        >
+                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                     </button>
+
+                     {/* Answer Section with smooth expand transition */}
+                     <div
+                        className={`overflow-hidden transition-all duration-300 ease-in-out ${openFAQIndex === index ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
+                           }`}
+                     >
+                        <div className="mt-4 text-black dark:text-gray-300 leading-relaxed text-base">
+                           {faq.answer}
+                        </div>
+                     </div>
+                  </div>
+               ))}
+            </div>
+         </div>
+
          {/* Tech Showcase */}
          <div className="w-full bg-[#F9FAFB] dark:bg-[#121212] py-10 lg:py-20">
             <div className="container mx-auto px-4">
@@ -237,3 +290,33 @@ export default function Page() {
    );
 }
 
+
+
+
+const faqData = [
+   {
+      question: "How does QR Attender work?",
+      answer:
+         "QR Attender uses advanced QR code scanning technology to simplify attendance tracking. Once you create your personalized QR code, all it takes is a quick scan to log your attendance. It’s perfect for schools, events, or any organization, as it eliminates the need for manual record-keeping and makes the entire process seamless and paperless.",
+   },
+   {
+      question: "Is QR Attender secure?",
+      answer:
+         "Yes, QR Attender prioritizes your data security. All attendance records and personal data are encrypted and securely stored on our servers, ensuring that only authorized users have access. We use industry-standard security protocols, so you can focus on managing attendance without worrying about data breaches or privacy issues.",
+   },
+   {
+      question: "How do I create a QR ID card?",
+      answer:
+         "You can generate QR ID card by visiting qrcards.rajislab.com just fill out the details and your QR Cards will be generated instantly.",
+   },
+   {
+      question: "How do I download attendance reports?",
+      answer:
+         "Downloading attendance reports is incredibly easy and flexible. You can access your reports by heading to the 'Reports' section. From there, select the time period you're interested in—whether it's daily, weekly, or monthly—and export the data in a format of your choice. The report generation is fast and can be customized to your specific needs.",
+   },
+   {
+      question: "How do I use QR Attender?",
+      answer:
+         "QR Attender is designed with simplicity in mind. Start by registering an account and creating your personal QR ID. Once that's done, all you have to do is scan your QR code at any participating location or event. The system will instantly log your attendance, saving you from dealing with cumbersome manual processes. You can also track your attendance history and download reports whenever needed.",
+   },
+];
