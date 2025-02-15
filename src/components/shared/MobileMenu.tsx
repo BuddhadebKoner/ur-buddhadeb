@@ -99,9 +99,11 @@ export const MobileMenu = () => {
                      {isLoaded ? (
                         user ? (
                            <div className="flex items-center space-x-3">
-                              <span className="text-gray-700 dark:text-gray-300">
-                                 {user.firstName || "User"}
-                              </span>
+                              <Link
+                                 href={`/profile/${user.username}`}
+                                 className="inline-block bg-black dark:bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-800 dark:hover:bg-gray-700 transition">
+                                 {user.username}
+                              </Link>
                            </div>
                         ) : (
                            <Link

@@ -12,6 +12,10 @@ export async function POST(request: NextRequest) {
             { status: 400 }
          );
       }
+      // remove spaces and make small caps username
+      const newUsername = username.replace(/\s+/g, "").toLowerCase();
+
+
 
       await connectToDatabase();
       const existingUser = await User.findOne({ email });
@@ -22,7 +26,7 @@ export async function POST(request: NextRequest) {
          );
       }
 
-      await User.create({ email, username });
+      await User.create({ email, username: newUsername });
 
       return NextResponse.json(
          { message: "User created successfully", },

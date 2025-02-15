@@ -30,25 +30,3 @@ export async function getOneBlog(slugParams: string) {
       return { blog: null };
    }
 }
-
-// a post req for register user
-export async function registerUser({ email, username }: { email: string, username: string }) {
-   try {
-      const response = await fetch(`/api/users`, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({ email, username }),
-      });
-
-      if (!response.ok) {
-         throw new Error("Failed to register user");
-      }
-
-      return await response.json();
-   } catch (error) {
-      console.error("Error registering user:", error);
-      return { error: "Failed to register user" };
-   }
-}

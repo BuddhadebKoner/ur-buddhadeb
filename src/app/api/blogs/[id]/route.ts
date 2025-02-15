@@ -3,7 +3,6 @@ import { connectToDatabase } from "../../../../../utils/db";
 import Blog from "../../../../../models/blogs";
 import User from "../../../../../models/user";
 
-
 // get blog by id
 export async function GET(
    request: NextRequest,
@@ -31,8 +30,7 @@ export async function GET(
       }
 
       return NextResponse.json({ blog }, { status: 200 });
-   } catch (error) {
-      console.error("Error fetching blog:", error);
+   } catch {
       return NextResponse.json({ error: "Failed to get blog" }, { status: 500 });
    }
 }

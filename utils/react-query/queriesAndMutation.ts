@@ -1,6 +1,7 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "./queryKeys";
 import { getAllBlogs, getOneBlog } from "../../api-calls/blogs-api";
+import { getUpdateUser, getUserByID } from "../../api-calls/user-api";
 
 export const useGetBlogs = () => {
    return useInfiniteQuery({
@@ -16,12 +17,35 @@ export const useGetBlogs = () => {
    });
 };
 
-
-export const useGetOneBlog = (slugParams: string) => { 
+export const useGetOneBlog = (slugParams: string) => {
    return useQuery({
       queryKey: [QUERY_KEYS.GET_ONE_BLOG, slugParams],
       queryFn: () => getOneBlog(slugParams),
       staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
+   });
+};
+
+// get user by id
+export const useGetUserByID = (id: string) => {
+   return useQuery({
+      queryKey: [QUERY_KEYS.GET_USER_BY_ID, id],
+      queryFn: () => getUserByID(id),
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+   });
+};
+
+// update user by id
+export const useUpdateUserByID = (id: string) => {
+   const queryClient = useQueryClient();
+
+   return useMutation({
+      mutationKey: [QUERY_KEYS.UPDATE_USER_BY_ID, id],
+      mutationFn: (updateData: { fullName: string; profileImage: string }) =>
+         getUpdateUser({ id, updateData }),
+      onSuccess: () => {
+         queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_USER_BY_ID, id] });
+      }
    });
 };

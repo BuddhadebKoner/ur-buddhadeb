@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Sun, Moon, Monitor, IndianRupee, Rss, Store, Loader, Menu } from "lucide-react";
@@ -12,9 +11,6 @@ export default function Navbar() {
    const { user, isLoaded } = useUser();
    const [theme, setTheme] = useState<string | null>(null);
    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-
-   console.log("user", user);
 
    // Function to get the current system theme
    const getSystemTheme = () =>
@@ -78,13 +74,6 @@ export default function Navbar() {
 
             {/* Logo Section */}
             <Link href="/" className="flex items-center space-x-3">
-               <Image
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                  src="https://cloud.appwrite.io/v1/storage/buckets/66f8e10b0034b56b85be/files/6772e34600021b7c9b90/view?project=66f8cb12003c2ead11e2"
-                  alt="logo"
-               />
                <h1 className="lg:text-2xl hidden lg:block font-semibold lg:font-light text-gray-800 dark:text-gray-200">
                   Ur Buddhadeb
                </h1>
@@ -119,9 +108,11 @@ export default function Navbar() {
                {isLoaded ? (
                   user ? (
                      <div className="flex items-center space-x-3">
-                        <span className="lg:text-lg text-sm font-light text-gray-700 dark:text-gray-300">
+                        <Link
+                           href={`/profile/${user.username}`}
+                           className="inline-block bg-black dark:bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-800 dark:hover:bg-gray-700 transition">
                            {user.username}
-                        </span>
+                        </Link>
                      </div>
                   ) : (
                      <Link
