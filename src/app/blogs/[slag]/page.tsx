@@ -56,7 +56,7 @@ export default function BlogDetailPage() {
 
    return (
       <>
-         <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-[#121212] dark:text-gray-100 lg:py-20 py-20 px-6 md:px-20 transition-colors duration-300">
+         <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-darkBgColor dark:text-gray-100 lg:py-20 py-20 px-6 md:px-20 transition-colors duration-300">
             {/* Breadcrumb */}
             <section className="max-w-4xl mx-auto">
                <p className="text-gray-600 dark:text-gray-400 text-base py-5">

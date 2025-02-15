@@ -21,9 +21,9 @@ export default function PriceingCard({
    const [isHovered, setIsHovered] = useState(false);
    return (
       <div
-         className={`relative border-2 border-gray-300 dark:border-gray-700 rounded-xl p-6 max-w-xs w-full mt-5 backdrop-blur-lg transition-all duration-300 ease-in-out
+         className={`relative border-2 border-gray-300 dark:border-gray-700 rounded-xl p-6 max-w-xs w-full mt-5 backdrop-blur-lg transition-all duration-300 ease-in-out cursor-pointer
         ${isHovered
-               ? "scale-105 shadow-2xl bg-white/70 dark:bg-gray-900/70"
+               ? "shadow-2xl bg-white/70 dark:bg-gray-900/70"
                : "bg-white/50 dark:bg-gray-900/50"
             }
       `}

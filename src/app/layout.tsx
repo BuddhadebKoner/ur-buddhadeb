@@ -6,6 +6,9 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { QueryProvider } from '../../utils/react-query/QueryProvider';
 import Footer from '@/components/shared/Footer';
+import GoToTopButton from '@/components/shared/Gototop';
+import { MobileMenuProvider } from '@/contexts/MobileMenuContext';
+import { MobileMenu } from '@/components/shared/MobileMenu';
 
 const geistSans = Geist({
    variable: '--font-geist-sans',
@@ -30,17 +33,19 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <ClerkProvider >
+      <ClerkProvider>
          <html lang="en">
-            <body
-               className={`${manrope.variable} ${geistSans.variable} antialiased`}
-            >
+            <body className={`${manrope.variable} ${geistSans.variable} antialiased dark:bg-darkBgColor bg-lightBgColor`}>
                <QueryProvider>
-                  <Navbar />
-                  {children}
-                  <Footer />
+                  <MobileMenuProvider>
+                     <Navbar />
+                     {children}
+                     <Footer />
+                     <MobileMenu />
+                  </MobileMenuProvider>
                </QueryProvider>
                <SpeedInsights />
+               <GoToTopButton />
             </body>
          </html>
       </ClerkProvider>

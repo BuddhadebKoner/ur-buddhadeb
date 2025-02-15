@@ -1,3 +1,12 @@
-export default function contactUs() {
-   return <div>contact us</div>;
+
+import { Metadata } from "next";
+import ContactUs from "./ContactUs";
+
+export const metadata: Metadata = {
+   title: "Contact Us",
+   description: "Contact Page",
+};
+
+export default function BlogPage() {
+   return <ContactUs />;
 }

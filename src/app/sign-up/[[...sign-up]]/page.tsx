@@ -6,13 +6,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-// import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+import { registerUser } from "../../../../api-calls/blogs-api";
 
 export default function SignUp() {
    const { isLoaded, signUp } = useSignUp();
    const [emailAddress, setEmailAddress] = useState("");
-   const [firstname, setFirstname] = useState("");
-   const [lastname, setLastname] = useState("");
    const [username, setUsername] = useState("");
    const [pendingVerification, setPendingVerification] = useState(false);
    const [code, setCode] = useState(["", "", "", "", "", ""]);
@@ -29,6 +27,13 @@ export default function SignUp() {
          if (pendingVerification) {
             const verificationCode = code.join("");
             await signUp.attemptEmailAddressVerification({ code: verificationCode });
+            // register user to database
+            const res = await registerUser({ email: emailAddress, username });
+            
+            if(res.error) {
+               throw new Error(res.error);
+            }
+            console.log("User registered successfully");
             router.push("/sign-in");
 
          } else {
@@ -56,12 +61,12 @@ export default function SignUp() {
       setCode(newCode);
       if (value && index < code.length - 1) {
          document.getElementById(`code-${index + 1}`)?.focus();
-      }  
+      }
    };
 
    return (
-      <div className="w-full min-h-screen flex justify-center items-center bg-white dark:bg-black">
-         <div className="max-w-lg w-full mx-auto p-6 bg-white dark:bg-black rounded-lg shadow-lg">
+      <div className="w-full min-h-screen flex justify-center items-center bg-lightBgColor dark:bg-darkBgColor">
+         <div className="max-w-lg w-full mx-auto p-6 bg-lightBgColor dark:bg-darkBgColor rounded-lg  border-2 border-gray-300 dark:border-gray-700">
 
             {(!isLoaded || isSubmitting) && (
                <div className="absolute inset-0 bg-white/10 dark:bg-black/30 backdrop-blur-md flex items-center justify-center z-10">
@@ -81,32 +86,6 @@ export default function SignUp() {
             <form className="mt-6 space-y-4" onSubmit={handleSignUpWithEmail}>
                {!pendingVerification ? (
                   <>
-                     <div className="flex gap-4">
-                        <div className="mb-4">
-                           <Label htmlFor="firstName">First Name</Label>
-                           <Input
-                              id="firstName"
-                              placeholder="Enter your first name"
-                              type="text"
-                              value={firstname}
-                              onChange={(e) => setFirstname(e.target.value)}
-                              required
-                           />
-                        </div>
-
-                        <div className="mb-4">
-                           <Label htmlFor="lastName">Last Name</Label>
-                           <Input
-                              id="lastName"
-                              placeholder="Enter your last name"
-                              type="text"
-                              value={lastname}
-                              onChange={(e) => setLastname(e.target.value)}
-                              required
-                           />
-                        </div>
-                     </div>
-
                      <div className="mb-4">
                         <Label htmlFor="userName">User Name</Label>
                         <Input

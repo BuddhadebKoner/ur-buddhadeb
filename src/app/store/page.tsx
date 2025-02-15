@@ -1,12 +1,12 @@
 
 import { Metadata } from "next";
-import Home from "./Home";
+import Store from "./Store";
 
 export const metadata: Metadata = {
-   title: "Home | Ur Buddhadeb",
-   description: "Home Page",
+   title: "Store | Ur Buddhadeb",
+   description: "Store Page",
 };
 
 export default function BlogPage() {
-   return <Home />;
+   return <Store />;
 }

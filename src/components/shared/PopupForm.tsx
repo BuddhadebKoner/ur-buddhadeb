@@ -84,48 +84,52 @@ export default function PopupForm({ onClose, title }: { onClose: () => void; tit
    };
 
    return (
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-lg w-full">
-         <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Enter your details</h3>
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-lg max-w-lg w-full text-gray-800 dark:text-gray-100">
+         <h3 className="text-xl font-semibold mb-4">Enter your details</h3>
          <form onSubmit={handleSubmit}>
-            <label className="block text-gray-600 dark:text-gray-300 mb-2">Name</label>
+            <label className="block mb-2">Name</label>
             <input
                type="text"
                name="name"
                value={formData.name}
                onChange={handleInputChange}
-               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4"
+               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4 bg-white dark:bg-gray-800
+                          text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                placeholder="Enter your name"
             />
             {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 
-            <label className="block text-gray-600 dark:text-gray-300 mb-2">Email</label>
+            <label className="block mb-2">Email</label>
             <input
                type="email"
                name="email"
                value={formData.email}
                onChange={handleInputChange}
-               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4"
+               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4 bg-white dark:bg-gray-800
+                          text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                placeholder="Enter your email"
             />
             {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
 
-            <label className="block text-gray-600 dark:text-gray-300 mb-2">Phone</label>
+            <label className="block mb-2">Phone</label>
             <input
                type="tel"
                name="phone"
                value={formData.phone}
                onChange={handleInputChange}
-               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4"
+               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4 bg-white dark:bg-gray-800
+                          text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                placeholder="Enter your phone number"
             />
             {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
 
-            <label className="block text-gray-600 dark:text-gray-300 mb-2">Preferred Plan</label>
+            <label className="block mb-2">Preferred Plan</label>
             <select
                name="preferredPlan"
                value={formData.preferredPlan}
                onChange={handleInputChange}
-               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4"
+               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4 bg-white dark:bg-gray-800
+                          text-gray-900 dark:text-gray-100"
             >
                <option value="Basic">Basic</option>
                <option value="Standard">Standard</option>
@@ -133,12 +137,13 @@ export default function PopupForm({ onClose, title }: { onClose: () => void; tit
             </select>
             {errors.preferredPlan && <p className="text-red-500 text-sm">{errors.preferredPlan}</p>}
 
-            <label className="block text-gray-600 dark:text-gray-300 mb-2">Message</label>
+            <label className="block mb-2">Message</label>
             <textarea
                name="message"
                value={formData.message}
                onChange={handleInputChange}
-               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4"
+               className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded mb-4 bg-white dark:bg-gray-800
+                          text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                placeholder="Enter any additional details"
             ></textarea>
             {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
@@ -151,7 +156,7 @@ export default function PopupForm({ onClose, title }: { onClose: () => void; tit
             </button>
          </form>
          <button
-            className="w-full mt-4 text-red-500 border border-red-500 py-2 rounded-lg hover:bg-red-500 hover:text-white dark:text-red-400 dark:border-red-400 dark:hover:bg-red-600"
+            className="w-full mt-4 text-red-500 border border-red-500 py-2 rounded-lg hover:bg-red-500 hover:text-white"
             onClick={onClose}
          >
             Close
