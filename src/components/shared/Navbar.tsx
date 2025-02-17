@@ -74,7 +74,7 @@ export default function Navbar() {
 
             {/* Logo Section */}
             <Link href="/" className="flex items-center space-x-3">
-               <h1 className="lg:text-2xl hidden lg:block font-semibold lg:font-light text-gray-800 dark:text-gray-200">
+               <h1 className="lg:text-2xl hidden lg:block font-semibold lg:font-light text-gray-800 dark:text-gray-300 ">
                   Ur Buddhadeb
                </h1>
             </Link>

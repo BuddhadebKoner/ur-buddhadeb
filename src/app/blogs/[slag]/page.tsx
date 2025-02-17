@@ -1,10 +1,13 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { useGetOneBlog } from "../../../../utils/react-query/queriesAndMutation";
+import { useDeleteBlogByID, useGetOneBlog } from "../../../../utils/react-query/queriesAndMutation";
 import BlogSidebarCard from "@/components/shared/BlogSidebarCard";
+import { Loader } from "lucide-react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "@/contexts/AuthContext";
 
 interface Blog {
    _id: string;
@@ -12,6 +15,7 @@ interface Blog {
    author: {
       fullName: string;
       profileImage: string;
+      email: string;
    };
    readTime: string;
    content: {
@@ -28,11 +32,22 @@ interface Blog {
 export default function BlogDetailPage() {
    const { slag } = useParams() as { slag: string };
    const { data, error, isLoading } = useGetOneBlog(slag as string);
+   const { mutate: deleteBlog, isPending: isDeleting } = useDeleteBlogByID(slag as string);
+   const authContext = useContext(AuthContext);
 
-   if (isLoading) {
+   useEffect(() => {
+      if (data) {
+         document.title = data.blog.title || "Blog Details";
+      }
+   }, [data]);
+
+
+   // route
+   const route = useRouter();
+   if (isLoading || isDeleting) {
       return (
          <div className="min-h-screen flex items-center justify-center text-gray-400 text-xl">
-            Loading blog...
+            <Loader className="animate-spin w-4 h-4" />
          </div>
       );
    }
@@ -44,7 +59,6 @@ export default function BlogDetailPage() {
          </div>
       );
    }
-
    const blog: Blog = data.blog;
 
    // Extract YouTube video ID
@@ -54,14 +68,36 @@ export default function BlogDetailPage() {
       return match ? match[1] : null;
    };
 
+   // handle delete blogs
+   const handleDeleteBlog = () => {
+      if (window.confirm("Are you sure you want to delete this blog?")) {
+         deleteBlog();
+         route.push("/blogs");
+      }
+   };
+   
    return (
       <>
          <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-darkBgColor dark:text-gray-100 lg:py-20 py-20 px-6 md:px-20 transition-colors duration-300">
             {/* Breadcrumb */}
             <section className="max-w-4xl mx-auto">
-               <p className="text-gray-600 dark:text-gray-400 text-base py-5">
-                  <Link href="/blogs" className="text-blue-600 dark:text-blue-400 underline">BLOGS</Link> / {blog.title.length > 25 ? `${blog.title.slice(0, 20)}...` : blog.title}
-               </p>
+               <div className="flex justify-between items-center">
+                  <p className="text-gray-600 dark:text-gray-400 text-base py-5">
+                     <Link href="/blogs" className="text-blue-600 dark:text-blue-400 underline">BLOGS</Link> / {blog.title.length > 25 ? `${blog.title.slice(0, 20)}...` : blog.title}
+                  </p>
+                  {/* delete blog button */}
+                  {authContext?.currentUser &&
+                     authContext.currentUser.email === blog.author.email && (
+                        <button
+                           className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                           onClick={handleDeleteBlog}
+                           disabled={isDeleting}
+                        >
+                           Delete Blog
+                        </button>
+                     )
+                  }
+               </div>
                <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
                   <Image src={blog.imageUrl} alt={blog.title} layout="fill" objectFit="cover" className="brightness-90 dark:brightness-75" />
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center">

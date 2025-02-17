@@ -7,6 +7,7 @@ import User from "../../../../models/user";
 export async function POST(request: NextRequest) {
    try {
       const { author, title, imageUrl, videoLink, readTime, slugParams, content } = await request.json();
+
       if (!author) {
          return NextResponse.json(
             { error: "Author is required" },
@@ -22,15 +23,7 @@ export async function POST(request: NextRequest) {
       }
 
       await connectToDatabase();
-      const existingBlog = await Blog.findOne({ slugParams });
-      if (existingBlog) {
-         return NextResponse.json(
-            { error: "chnage the slag value !" },
-            { status: 400 }
-         );
-      }
-
-      await Blog.create({
+      const res = await Blog.create({
          author,
          title,
          imageUrl,
@@ -39,6 +32,13 @@ export async function POST(request: NextRequest) {
          slugParams,
          content
       });
+
+      if (!res) {
+         return NextResponse.json(
+            { error: res.error },
+            { status: 400 }
+         );
+      }
 
       return NextResponse.json(
          { message: "Blog created successfully" },
@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
          .sort({ createdAt: -1 })
          .skip(skip)
          .limit(limit)
-         .lean(); 
+         .lean();
 
       const totalBlogs = await Blog.countDocuments();
 

@@ -8,7 +8,6 @@ export interface IBlogs {
    readTime: string;
    slugParams: string;
    isPublished: boolean;
-   isEdited?: boolean;
    content: { type: string, value: string }[];
 }
 
@@ -23,7 +22,6 @@ const blogSchema = new Schema<IBlogs>({
    readTime: { type: String, required: true },
    slugParams: { type: String, required: true, unique: true },
    isPublished: { type: Boolean, default: false },
-   isEdited: { type: Boolean, default: false },
    content: [{
       type: { type: String, enum: ["text", "code", "heading", "bold", "highlight"], required: true },
       value: { type: String, required: true },

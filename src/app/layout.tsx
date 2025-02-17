@@ -9,6 +9,7 @@ import Footer from '@/components/shared/Footer';
 import GoToTopButton from '@/components/shared/Gototop';
 import { MobileMenuProvider } from '@/contexts/MobileMenuContext';
 import { MobileMenu } from '@/components/shared/MobileMenu';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 const geistSans = Geist({
    variable: '--font-geist-sans',
@@ -34,20 +35,22 @@ export default function RootLayout({
 }>) {
    return (
       <ClerkProvider>
-         <html lang="en">
-            <body className={`${manrope.variable} ${geistSans.variable} antialiased dark:bg-darkBgColor bg-lightBgColor`}>
-               <QueryProvider>
-                  <MobileMenuProvider>
-                     <Navbar />
-                     {children}
-                     <Footer />
-                     <MobileMenu />
-                  </MobileMenuProvider>
-               </QueryProvider>
-               <SpeedInsights />
-               <GoToTopButton />
-            </body>
-         </html>
+         <AuthProvider>
+            <html lang="en">
+               <body className={`${manrope.variable} ${geistSans.variable} antialiased dark:bg-darkBgColor bg-lightBgColor`}>
+                  <QueryProvider>
+                     <MobileMenuProvider>
+                        <Navbar />
+                        {children}
+                        <Footer />
+                        <MobileMenu />
+                     </MobileMenuProvider>
+                  </QueryProvider>
+                  <SpeedInsights />
+                  <GoToTopButton />
+               </body>
+            </html>
+         </AuthProvider>
       </ClerkProvider>
    );
 }

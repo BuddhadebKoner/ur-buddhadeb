@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "./queryKeys";
-import { getAllBlogs, getOneBlog } from "../../api-calls/blogs-api";
+import { deleteOneBlog, getAllBlogs, getOneBlog } from "../../api-calls/blogs-api";
 import { getUpdateUser, getUserByID } from "../../api-calls/user-api";
 
 export const useGetBlogs = () => {
@@ -49,3 +49,17 @@ export const useUpdateUserByID = (id: string) => {
       }
    });
 };
+
+
+// delete blog by id
+export const useDeleteBlogByID = (id: string) => { 
+   const queryClient = useQueryClient();
+
+   return useMutation({
+      mutationKey: [QUERY_KEYS.DELETE_BLOG_BY_ID, id],
+      mutationFn: () => deleteOneBlog(id),
+      onSuccess: () => {
+         queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_ALL_BLOGS] });
+      }
+   });
+}

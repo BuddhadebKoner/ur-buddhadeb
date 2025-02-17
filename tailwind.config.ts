@@ -12,7 +12,8 @@ export default {
 		extend: {
 			colors: {
 				// Custom colors
-				darkBgColor: '#121212',
+				darkBgColor: '#191a1b',
+				darkTextColor: '#79a617',
 				lightBgColor: '#ffffff',
 				lightBarBgcolor: '#f9fafb',
 				darkBorderColor: '#1f1f1f',

@@ -111,7 +111,7 @@ const Page = () => {
 
    if (isFetchingUser) {
       return (
-         <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
+         <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-darkBgColor">
             <div className="flex flex-col items-center gap-2">
                <Loader className="w-10 h-10 animate-spin" />
                <span className="text-gray-600 dark:text-gray-400">Loading profile...</span>
@@ -122,7 +122,7 @@ const Page = () => {
 
    if (fetchError) {
       return (
-         <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
+         <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-darkBgColor">
             <div className="text-red-500 dark:text-red-400 p-4 rounded-lg bg-red-50 dark:bg-red-900">
                Error loading profile: {(fetchError as Error).message}
             </div>
@@ -132,14 +132,14 @@ const Page = () => {
 
    if (!user) {
       return (
-         <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
+         <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-darkBgColor">
             <div className="text-red-500 dark:text-red-400">User not found</div>
          </div>
       );
    }
 
    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
+      <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-darkBgColor py-12">
          <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
             <h1 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
                Profile Page
