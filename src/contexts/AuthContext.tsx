@@ -36,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       updatedAt: "",
       fullName: "",
    });
-   const [isLoading, setIsLoading] = useState(true);
+   const [isLoading, setIsLoading] = useState<boolean>(false);
    const { user, isLoaded } = useUser();
 
    const fetchUserData = useCallback(async () => {
@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setIsLoading(false);
             return;
          }
-         const username = user.username;
+         const username = user?.username;
 
          if (!username) {
             console.error("Username is null");
@@ -57,17 +57,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
          const res = await getUserByID(username);
          if (res.error) {
             console.error("Error fetching user:", res.error);
+            setIsLoading(false);
             return;
          }
-         console.log("User fetched successfully:", res.user);
          setCurrentUser(res.user);
-
          setIsLoading(false);
-
       } catch (error) {
          console.error("Error fetching user:", error);
-         return { error: "Failed to get user" };
-
+         setIsLoading(false);
       }
    }, [user, isLoaded]);
 

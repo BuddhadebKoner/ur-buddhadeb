@@ -47,7 +47,7 @@ export default function BlogDetailPage() {
    if (isLoading || isDeleting) {
       return (
          <div className="min-h-screen flex items-center justify-center text-gray-400 text-xl">
-            <Loader className="animate-spin w-4 h-4" />
+            <Loader className="animate-spin w-10 h-10" />
          </div>
       );
    }

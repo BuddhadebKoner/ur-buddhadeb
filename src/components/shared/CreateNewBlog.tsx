@@ -400,7 +400,7 @@ const CreateNewBlog: React.FC<CreateNewBlogProps> = ({
                            return (
                               <h2
                                  key={block._id}
-                                 className="text-2xl font-bold text-gray-900 dark:text-white"
+                                 className="text-2xl font-bold text-gray-900 dark:text-white mb-5"
                               >
                                  {block.value || "Heading preview..."}
                               </h2>
@@ -409,7 +409,7 @@ const CreateNewBlog: React.FC<CreateNewBlogProps> = ({
                            return (
                               <p
                                  key={block._id}
-                                 className="text-lg text-gray-800 dark:text-gray-300"
+                                 className="text-lg text-gray-800 dark:text-gray-300 mb-5"
                               >
                                  {block.value || "Start typing your content here..."}
                               </p>
@@ -418,7 +418,7 @@ const CreateNewBlog: React.FC<CreateNewBlogProps> = ({
                            return (
                               <pre
                                  key={block._id}
-                                 className="bg-gray-200 dark:bg-gray-800 p-4 rounded-md overflow-x-auto text-gray-800 dark:text-gray-300"
+                                 className="bg-gray-200 dark:bg-gray-800 p-4 rounded-md overflow-x-auto text-gray-800 dark:text-gray-300 mb-5"
                               >
                                  <code>{block.value}</code>
                               </pre>
@@ -427,7 +427,7 @@ const CreateNewBlog: React.FC<CreateNewBlogProps> = ({
                            return (
                               <h2
                                  key={block._id}
-                                 className="text-lg font-bold text-gray-900 dark:text-gray-200"
+                                 className="text-lg font-bold text-gray-900 dark:text-gray-200 mb-5"
                               >
                                  {block.value || "Bold text preview..."}
                               </h2>
@@ -436,7 +436,7 @@ const CreateNewBlog: React.FC<CreateNewBlogProps> = ({
                            return (
                               <h2
                                  key={block._id}
-                                 className="text-lg bg-yellow-300 text-black px-2 py-1 inline-block rounded"
+                                 className="text-lg bg-yellow-300 text-black px-2 py-1 inline-block rounded mb-5"
                               >
                                  {block.value || "Highlighted text preview..."}
                               </h2>
