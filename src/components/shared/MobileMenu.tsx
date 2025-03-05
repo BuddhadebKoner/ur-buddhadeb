@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Sun, Moon, Monitor, IndianRupee, Rss, Store, Loader, Home } from "lucide-react";
+import { Sun, Moon, Monitor, IndianRupee, Loader, Home } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { useMobileMenu } from "@/contexts/MobileMenuContext";
 
