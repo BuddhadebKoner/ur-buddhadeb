@@ -2,7 +2,9 @@
 
 import PopupForm from "@/components/shared/PopupForm";
 import PriceingCard from "@/components/shared/PriceingCard";
+import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
+import { redirect } from 'next/navigation'
 
 const pricingData = [
    {
@@ -61,9 +63,19 @@ export default function Pricing() {
    const [choosePlan, setChoosePlan] = useState("");
 
    const handleGetStartedClick = (title: string) => {
+
+      if (!isLoaded) return;
+      if (!user) {
+         // Redirect to login page
+         redirect('/sign-in');   
+      };
+
       setChoosePlan(title);
       setShowForm(true);
    };
+
+   const { user, isLoaded } = useUser();
+
 
    return (
       <>

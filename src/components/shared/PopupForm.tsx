@@ -19,6 +19,7 @@ export default function PopupForm({ onClose, title }: { onClose: () => void; tit
       message: "",
    });
 
+
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData({

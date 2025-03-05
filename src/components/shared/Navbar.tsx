@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { Sun, Moon, Monitor, IndianRupee, Rss, Store, Loader, Menu } from "lucide-react";
+import { Sun, Moon, Monitor, IndianRupee, Loader, Menu } from "lucide-react";
 import { useMobileMenu } from "@/contexts/MobileMenuContext";
 
 export default function Navbar() {
@@ -89,7 +89,7 @@ export default function Navbar() {
                   Pricing
                </Link>
 
-               <Link
+               {/* <Link
                   href="/blogs"
                   className="lg:text-lg text-sm font-thin text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition duration-200 flex items-center gap-1"
                >
@@ -103,7 +103,7 @@ export default function Navbar() {
                >
                   <Store className="w-5 h-5 inline-block" />
                   Store
-               </Link>
+               </Link> */}
 
                {isLoaded ? (
                   user ? (

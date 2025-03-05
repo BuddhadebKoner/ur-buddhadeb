@@ -4,6 +4,7 @@ export default function UserBatch({
    user,
 }: {
    user: {
+      portfolio: string;
       name: string;
       image: string;
       role: string;
@@ -11,7 +12,9 @@ export default function UserBatch({
    };
 }) {
    return (
-      <div className="w-fit h-fit flex flex-col justify-center items-start gap-4 p-4 rounded-lg shadow-md cursor-pointer bg-white dark:bg-[#1A1A1A]">
+      <div
+         onClick={() => window.open(user.portfolio, "_blank")}
+         className="w-fit h-fit flex flex-col justify-center items-start gap-4 p-4 rounded-lg shadow-md cursor-pointer bg-white dark:bg-[#1A1A1A]">
          {/* User Info Section */}
          <div className="flex justify-start items-center gap-4">
             <Image

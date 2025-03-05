@@ -79,7 +79,7 @@ export const MobileMenu = () => {
                   >
                      <IndianRupee className="w-5 h-5" /> Pricing
                   </Link>
-                  <Link
+                  {/* <Link
                      href="/blogs"
                      className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition"
                      onClick={closeMenu}
@@ -92,7 +92,7 @@ export const MobileMenu = () => {
                      onClick={closeMenu}
                   >
                      <Store className="w-5 h-5" /> Store
-                  </Link>
+                  </Link> */}
 
                   {/* User Section */}
                   <div>
