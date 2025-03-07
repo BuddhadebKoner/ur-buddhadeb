@@ -1,118 +1,96 @@
 "use client";
 
-import PopupForm from "@/components/shared/PopupForm";
-import PriceingCard from "@/components/shared/PriceingCard";
-import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
-import { redirect } from 'next/navigation'
+import { PricingSection } from "@/components/blocks/pricing-section"
+export const PAYMENT_FREQUENCIES = ["monthly", "yearly"]
 
-const pricingData = [
+export const TIERS = [
    {
-      title: "Basic",
-      description: "Showcase websites for portfolios",
-      originalPrice: 3999,
-      discount: 25,
-      discountedPrice: Math.floor(3999 * (1 - 25 / 100)),
+      id: "individuals",
+      name: "Individuals",
+      price: {
+         monthly: "Free",
+         yearly: "Free",
+      },
+      description: "For your hobby projects",
       features: [
-         { text: "Free Domain for 1 Year", icon: "/icons/right.svg" },
-         { text: "Hosting Included", icon: "/icons/right.svg" },
-         { text: "Mobile-Friendly", icon: "/icons/right.svg" },
-         { text: "Ongoing Support", icon: "/icons/right.svg" },
-         { text: "Admin Panel", icon: "/icons/cross.svg" },
-         { text: "Database Included", icon: "/icons/cross.svg" },
-         { text: "Scalable Server", icon: "/icons/cross.svg" },
+         "Free email alerts",
+         "3-minute checks",
+         "Automatic data enrichment",
+         "10 monitors",
+         "Up to 3 seats",
       ],
+      cta: "Get started",
    },
    {
-      title: "Standard",
-      description: "E-commerce sites with essential features",
-      originalPrice: 7999,
-      discount: 18,
-      discountedPrice: Math.floor(7999 * (1 - 18 / 100)),
+      id: "teams",
+      name: "Teams",
+      price: {
+         monthly: 90,
+         yearly: 75,
+      },
+      description: "Great for small businesses",
       features: [
-         { text: "Free Domain for 1 Year", icon: "/icons/right.svg" },
-         { text: "Hosting Included", icon: "/icons/right.svg" },
-         { text: "Mobile-Friendly", icon: "/icons/right.svg" },
-         { text: "Ongoing Support", icon: "/icons/right.svg" },
-         { text: "Admin Panel", icon: "/icons/right.svg" },
-         { text: "Database Included", icon: "/icons/right.svg" },
-         { text: "Scalable Server", icon: "/icons/cross.svg" },
+         "Unlimited phone calls",
+         "30 second checks",
+         "Single-user account",
+         "20 monitors",
+         "Up to 6 seats",
       ],
+      cta: "Get started",
+      popular: true,
    },
    {
-      title: "Premium",
-      description: "Complete business websites with custom features",
-      originalPrice: 15999,
-      discount: 12,
-      discountedPrice: Math.floor(15999 * (1 - 12 / 100)),
+      id: "organizations",
+      name: "Organizations",
+      price: {
+         monthly: 120,
+         yearly: 100,
+      },
+      description: "Great for large businesses",
       features: [
-         { text: "Free Domain for 1 Year", icon: "/icons/right.svg" },
-         { text: "Hosting Included", icon: "/icons/right.svg" },
-         { text: "Mobile-Friendly", icon: "/icons/right.svg" },
-         { text: "Ongoing Support", icon: "/icons/right.svg" },
-         { text: "Admin Panel", icon: "/icons/right.svg" },
-         { text: "Database Included", icon: "/icons/right.svg" },
-         { text: "Scalable Server", icon: "/icons/right.svg" },
+         "Unlimited phone calls",
+         "15 second checks",
+         "Single-user account",
+         "50 monitors",
+         "Up to 10 seats",
       ],
+      cta: "Get started",
    },
-];
-
+   {
+      id: "enterprise",
+      name: "Enterprise",
+      price: {
+         monthly: "Custom",
+         yearly: "Custom",
+      },
+      description: "For multiple teams",
+      features: [
+         "Everything in Organizations",
+         "Up to 5 team members",
+         "100 monitors",
+         "15 status pages",
+         "200+ integrations",
+      ],
+      cta: "Contact Us",
+      highlighted: true,
+   },
+]
 
 export default function Pricing() {
-   const [showForm, setShowForm] = useState(false);
-   const [choosePlan, setChoosePlan] = useState("");
-
-   const handleGetStartedClick = (title: string) => {
-
-      if (!isLoaded) return;
-      if (!user) {
-         // Redirect to login page
-         redirect('/sign-in');   
-      };
-
-      setChoosePlan(title);
-      setShowForm(true);
-   };
-
-   const { user, isLoaded } = useUser();
-
 
    return (
       <>
          <div className="w-full min-h-screen flex flex-col py-16 dark:bg-darkBgColor">
-            {/* Pricing Notice */}
-            <div className="w-full bg-cover bg-center py-3 lg:py-2 dark:bg-slate-500 bg-lightBarBgcolor">
-               <div className="mx-auto flex justify-center lg:justify-between items-center px-4 lg:px-16">
-                  <h1 className="text-black dark:text-white font-medium text-xs lg:text-sm text-center lg:text-left">
-                     All prices are base starting points and will vary based on website requirements.
-                  </h1>
+            <div className="relative flex justify-center items-center w-full mt-20 scale-90">
+               <div className="absolute inset-0 -z-10">
+                  <div className="h-full w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:35px_35px] opacity-30 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
                </div>
+               <PricingSection
+                  frequencies={PAYMENT_FREQUENCIES}
+                  tiers={TIERS}
+               />
             </div>
 
-            {/* Pricing Plans */}
-            <div className="w-full lg:py-10 py-5">
-               <div className="container mx-auto flex justify-center lg:justify-evenly items-center px-4 lg:px-16 flex-wrap gap-6">
-                  {pricingData.map((plan, index) => (
-                     <PriceingCard
-                        key={index}
-                        plan={plan}
-                        onGetStartedClick={handleGetStartedClick}
-                     />
-                  ))}
-               </div>
-            </div>
-
-
-
-            {/* Popup Form */}
-            {showForm && (
-               <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 dark:bg-gray-800 dark:bg-opacity-60 backdrop-blur-md z-50">
-                  <PopupForm
-                     title={choosePlan}
-                     onClose={() => setShowForm(false)}
-                  />
-               </div>
-            )}
          </div>
       </>
    );

@@ -9,6 +9,7 @@ import UserBatch from "@/components/shared/UserBatch";
 import { ThreeDCard } from "@/components/shared/Card";
 import Image from "next/image";
 import Link from "next/link";
+import { FaqSection } from "@/components/blocks/faq";
 const words = ["Family", "Team"];
 
 const techIcons = [
@@ -93,58 +94,21 @@ const projects = [
 
 
 
-const faqData = [
+const DEMO_FAQS = [
    {
-      question: "What makes your website development service unique?",
-      answer:
-         "I focus on high-performance, SEO-friendly, and fully responsive designs with modern technologies like React, Next.js, and MERN stack. Every project is built with clean and scalable code.",
+      question: "What makes your platform unique?",
+      answer: "Our platform stands out through its intuitive design, powerful automation capabilities, and seamless integration options. We've focused on creating a user experience that combines simplicity with advanced features.",
    },
    {
-      question: "How transparent is your payment process?",
-      answer:
-         "I ensure complete transparency in payments. You will receive a detailed breakdown of costs upfront, and payments are processed securely with milestone-based payments for larger projects.",
+      question: "How does the pricing structure work?",
+      answer: "We offer flexible, transparent pricing tiers designed to scale with your needs. Each tier includes a core set of features, with additional capabilities as you move up. All plans start with a 14-day free trial.",
    },
    {
-      question: "Can I see examples of websites you have built?",
-      answer:
-         "Yes, I have a showcase of completed projects where you can explore various designs, animations, and functionalities. These examples demonstrate my expertise in web development.",
-   },
-   {
-      question: "Do you provide custom website solutions?",
-      answer:
-         "Absolutely! Every website is tailored to meet the client's specific needs, whether it's an e-commerce platform, a portfolio, or a business website.",
-   },
-   {
-      question: "How long does it take to build a website?",
-      answer:
-         "The timeline depends on the complexity of the website. A basic website takes around 5-7 days, while complex projects may take 2-4 weeks. A precise timeline is provided after discussion.",
-   },
-   {
-      question: "Do you offer post-launch support and maintenance?",
-      answer:
-         "Yes! I provide ongoing support, including updates, bug fixes, and performance optimization to ensure your website runs smoothly.",
-   },
-   {
-      question: "Will my website be mobile-friendly and SEO optimized?",
-      answer:
-         "Yes, every website is designed to be fully responsive and SEO-friendly, ensuring fast loading times, proper indexing, and great user experience across all devices.",
-   },
-   {
-      question: "What technologies do you use for web development?",
-      answer:
-         "I primarily use React, Next.js, Express.js, MongoDB, and Node.js. For animations, I implement GSAP, Framer Motion, and Lottie to enhance user experience.",
-   },
-   {
-      question: "Can I update the content on my website myself?",
-      answer:
-         "Yes, if you opt for a CMS-based website, I provide easy-to-use admin panels where you can manage content without any coding knowledge.",
-   },
-   {
-      question: "How do I get started with ordering a website?",
-      answer:
-         "Simply contact me through my website, discuss your requirements, and I'll provide a tailored proposal. Once approved, we proceed with development step by step.",
+      question: "What kind of support do you offer?",
+      answer: "We provide comprehensive support through multiple channels. This includes 24/7 live chat, detailed documentation, video tutorials, and dedicated account managers for enterprise clients.",
    },
 ];
+
 
 
 
@@ -184,6 +148,7 @@ export default function Home() {
          </div>
 
          {/* Main Links Section */}
+
          <div className="w-full bg-lightBarBgcolor dark:bg-darkBgColor py-12 sm:py-16 md:py-20 lg:py-32 xl:py-40">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
                <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
@@ -276,7 +241,7 @@ export default function Home() {
                   {/* Show More */}
                   <Link
                      href="/store"
-                     className="text-sm sm:text-base md:text-lg font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                     className="text-sm sm:text-base md:text-lg text-current font-medium text-blue-600 hover:text-blue-800 transition-colors"
                   >
                      Show More
                   </Link>
@@ -284,43 +249,19 @@ export default function Home() {
             </div>
          </div>
 
-         {/* FAQ Section */}
-         <div className="w-full px-4 sm:px-6 md:px-10 lg:px-[6rem] xl:px-[10rem] py-12 sm:py-16 md:py-20 lg:py-24 bg-lightBgColor dark:bg-darkBgColor">
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-start text-black dark:text-white mb-8 sm:mb-10 md:mb-12">
-               Frequently Asked Questions
-            </h3>
-
-            <div className="space-y-4 sm:space-y-6 md:space-y-8">
-               {faqData.map((faq, index) => (
-                  <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-4 sm:pb-5 md:pb-6">
-                     <button
-                        onClick={() => toggleFAQ(index)}
-                        className="w-full text-left flex justify-between items-center py-3 text-base sm:text-lg md:text-xl font-semibold text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition-all duration-300"
-                     >
-                        <span>{faq.question}</span>
-
-                        <svg
-                           className={`w-4 sm:w-5 md:w-6 text-black dark:text-white transition-transform duration-300 ${openFAQIndex === index ? 'rotate-180' : ''}`}
-                           fill="none"
-                           stroke="currentColor"
-                           strokeWidth="2"
-                           viewBox="0 0 24 24"
-                           xmlns="http://www.w3.org/2000/svg"
-                        >
-                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4"></path>
-                        </svg>
-                     </button>
-
-                     <div
-                        className={`overflow-hidden transition-all duration-300 ease-in-out ${openFAQIndex === index ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'}`}
-                     >
-                        <div className="mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base text-black dark:text-gray-300 leading-relaxed">
-                           {faq.answer}
-                        </div>
-                     </div>
-                  </div>
-               ))}
-            </div>
+         <div className="w-full flex justify-center bg-lightBarBgcolor dark:bg-darkBgColor py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20">
+            {/* FAQ Section */}
+            <FaqSection
+               title="Frequently Asked Questions"
+               description="Everything you need to know about our platform"
+               items={DEMO_FAQS}
+               contactInfo={{
+                  title: "Still have questions?",
+                  description: "We're here to help you",
+                  buttonText: "Contact Support",
+                  onContact: () => console.log("Contact support clicked"),
+               }}
+            />
          </div>
 
          {/* Tech Showcase */}
@@ -333,8 +274,8 @@ export default function Home() {
                            className="w-8 sm:w-10 md:w-12 lg:w-16 xl:w-20"
                            src={icon.src}
                            alt={icon.alt}
-                           width={50}
-                           height={50}
+                           width={20}
+                           height={20}
                         />
                         <h1 className="text-xs sm:text-sm md:text-base lg:text-xl text-gray-500 dark:text-gray-300 font-semibold">
                            {icon.alt}
